@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\src\Backend\Modules\Players\Domain\Euro2024Challenge.Modules.Players.Domain\Euro2024Challenge.Modules.Players.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

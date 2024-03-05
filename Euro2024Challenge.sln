@@ -25,11 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{E2B1B80A-60F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Modules.Players.Application", "Application\Euro2024Challenge.Modules.Players.Application.csproj", "{D9A5C22D-6F16-46FD-BBCA-30ECBBF62080}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Modules.Players.Domain", "Euro2024Challenge.Modules.Players.Domain\Euro2024Challenge.Modules.Players.Domain.csproj", "{CAF98333-9DB7-4A3B-9945-C3EA2BE73B2F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Modules.Players.Infrastructure", "Euro2024Challenge.Modules.Players.Infrastructure\Euro2024Challenge.Modules.Players.Infrastructure.csproj", "{970F00F1-D1A2-4318-94A6-32EBD6B6B123}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Modules.Players.Api", "Euro2024Challenge.Modules.Players.Api\Euro2024Challenge.Modules.Players.Api.csproj", "{F99F5A18-A026-4A42-AD6C-D98FDD2FD403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Modules.Players.Domain", "src\Backend\Modules\Players\Domain\Euro2024Challenge.Modules.Players.Domain\Euro2024Challenge.Modules.Players.Domain.csproj", "{344D823F-187C-4FE1-99D8-19685F24D399}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,6 @@ Global
 		{D9A5C22D-6F16-46FD-BBCA-30ECBBF62080}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9A5C22D-6F16-46FD-BBCA-30ECBBF62080}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9A5C22D-6F16-46FD-BBCA-30ECBBF62080}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CAF98333-9DB7-4A3B-9945-C3EA2BE73B2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CAF98333-9DB7-4A3B-9945-C3EA2BE73B2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CAF98333-9DB7-4A3B-9945-C3EA2BE73B2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CAF98333-9DB7-4A3B-9945-C3EA2BE73B2F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{970F00F1-D1A2-4318-94A6-32EBD6B6B123}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{970F00F1-D1A2-4318-94A6-32EBD6B6B123}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{970F00F1-D1A2-4318-94A6-32EBD6B6B123}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -53,6 +49,10 @@ Global
 		{F99F5A18-A026-4A42-AD6C-D98FDD2FD403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F99F5A18-A026-4A42-AD6C-D98FDD2FD403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F99F5A18-A026-4A42-AD6C-D98FDD2FD403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{344D823F-187C-4FE1-99D8-19685F24D399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{344D823F-187C-4FE1-99D8-19685F24D399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{344D823F-187C-4FE1-99D8-19685F24D399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{344D823F-187C-4FE1-99D8-19685F24D399}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,9 +67,9 @@ Global
 		{2E4EE5D5-93B4-4758-B699-DABEE4D855A4} = {5079D7B6-D883-4D2E-8DB6-23D94A0AB41B}
 		{E2B1B80A-60F1-42BB-B9D0-0994D8A1482E} = {5079D7B6-D883-4D2E-8DB6-23D94A0AB41B}
 		{D9A5C22D-6F16-46FD-BBCA-30ECBBF62080} = {4310E1C9-BBB5-4D3C-8848-5E5A992B2DAB}
-		{CAF98333-9DB7-4A3B-9945-C3EA2BE73B2F} = {57643CBB-7C06-4A66-8CDC-0B02626311A3}
 		{970F00F1-D1A2-4318-94A6-32EBD6B6B123} = {2E4EE5D5-93B4-4758-B699-DABEE4D855A4}
 		{F99F5A18-A026-4A42-AD6C-D98FDD2FD403} = {E2B1B80A-60F1-42BB-B9D0-0994D8A1482E}
+		{344D823F-187C-4FE1-99D8-19685F24D399} = {57643CBB-7C06-4A66-8CDC-0B02626311A3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EBAAD8C-09EA-4FBD-A644-3267E2B056BA}
