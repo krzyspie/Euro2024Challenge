@@ -1,0 +1,6 @@
+@Euro2024Challenge.Modules.Players.Api_HostAddress = http://localhost:5022
+
+GET {{Euro2024Challenge.Modules.Players.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
