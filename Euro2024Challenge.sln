@@ -7,13 +7,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9018316F-BBA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5419A986-9252-4F96-B53F-E875A3E37FBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Players.Domain", "src\Backend\Modules\Players\Domain\Euro2024Challenge.Backend.Modules.Players.Domain\Euro2024Challenge.Backend.Modules.Players.Domain.csproj", "{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{5191152F-D2CF-41BE-B8F0-41557E5C1E4E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{E7B7EA53-0A55-49CA-95E0-3EF169862F9F}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{8E52C7A1-DA78-4D57-8C29-E0329F8E3460}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3E7C3762-9F79-438A-AEB0-F8D67515C3EC}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{CF097479-0ADE-4BFA-A57E-F9776DD71C2C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{B914DD8C-5E5B-4A83-A352-6C5733737D31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Players.Domain", "src\Backend\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Domain\Euro2024Challenge.Backend.Modules.Players.Domain.csproj", "{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,19 +21,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37} = {B914DD8C-5E5B-4A83-A352-6C5733737D31}
-		{E7B7EA53-0A55-49CA-95E0-3EF169862F9F} = {9018316F-BBA3-45C8-B15D-3B0D56FE75FE}
-		{3E7C3762-9F79-438A-AEB0-F8D67515C3EC} = {E7B7EA53-0A55-49CA-95E0-3EF169862F9F}
-		{B914DD8C-5E5B-4A83-A352-6C5733737D31} = {3E7C3762-9F79-438A-AEB0-F8D67515C3EC}
+		{5191152F-D2CF-41BE-B8F0-41557E5C1E4E} = {9018316F-BBA3-45C8-B15D-3B0D56FE75FE}
+		{8E52C7A1-DA78-4D57-8C29-E0329F8E3460} = {5191152F-D2CF-41BE-B8F0-41557E5C1E4E}
+		{CF097479-0ADE-4BFA-A57E-F9776DD71C2C} = {8E52C7A1-DA78-4D57-8C29-E0329F8E3460}
+		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672} = {CF097479-0ADE-4BFA-A57E-F9776DD71C2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EBAAD8C-09EA-4FBD-A644-3267E2B056BA}
