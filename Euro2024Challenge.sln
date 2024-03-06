@@ -13,7 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{8E52
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{CF097479-0ADE-4BFA-A57E-F9776DD71C2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Players.Domain", "src\Backend\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Domain\Euro2024Challenge.Backend.Modules.Players.Domain.csproj", "{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Backend.Modules.Players.Domain", "src\Backend\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Domain\Euro2024Challenge.Backend.Modules.Players.Domain.csproj", "{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Players.Application", "src\Backend\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Application\Euro2024Challenge.Backend.Modules.Players.Application.csproj", "{6585DBB8-B701-489F-9334-195E7D983A29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Players.Infrastructure", "src\Backend\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Infrastructure\Euro2024Challenge.Backend.Modules.Players.Infrastructure.csproj", "{4AE12F17-00B0-47EF-A22A-18CF1F7233DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Players.Api", "src\Backend\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api.csproj", "{D6C34329-9CC6-491F-8585-EE5E8165F2AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +31,18 @@ Global
 		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6585DBB8-B701-489F-9334-195E7D983A29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6585DBB8-B701-489F-9334-195E7D983A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6585DBB8-B701-489F-9334-195E7D983A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6585DBB8-B701-489F-9334-195E7D983A29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4AE12F17-00B0-47EF-A22A-18CF1F7233DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4AE12F17-00B0-47EF-A22A-18CF1F7233DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4AE12F17-00B0-47EF-A22A-18CF1F7233DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4AE12F17-00B0-47EF-A22A-18CF1F7233DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C34329-9CC6-491F-8585-EE5E8165F2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C34329-9CC6-491F-8585-EE5E8165F2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C34329-9CC6-491F-8585-EE5E8165F2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C34329-9CC6-491F-8585-EE5E8165F2AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -34,6 +52,9 @@ Global
 		{8E52C7A1-DA78-4D57-8C29-E0329F8E3460} = {5191152F-D2CF-41BE-B8F0-41557E5C1E4E}
 		{CF097479-0ADE-4BFA-A57E-F9776DD71C2C} = {8E52C7A1-DA78-4D57-8C29-E0329F8E3460}
 		{FB00F471-1BD7-4B91-AECD-A0F47A1F8672} = {CF097479-0ADE-4BFA-A57E-F9776DD71C2C}
+		{6585DBB8-B701-489F-9334-195E7D983A29} = {CF097479-0ADE-4BFA-A57E-F9776DD71C2C}
+		{4AE12F17-00B0-47EF-A22A-18CF1F7233DA} = {CF097479-0ADE-4BFA-A57E-F9776DD71C2C}
+		{D6C34329-9CC6-491F-8585-EE5E8165F2AD} = {CF097479-0ADE-4BFA-A57E-F9776DD71C2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EBAAD8C-09EA-4FBD-A644-3267E2B056BA}
