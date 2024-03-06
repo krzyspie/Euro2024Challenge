@@ -9,6 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{5419A986
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Players.Domain", "src\Backend\Modules\Players\Domain\Euro2024Challenge.Backend.Modules.Players.Domain\Euro2024Challenge.Backend.Modules.Players.Domain.csproj", "{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{E7B7EA53-0A55-49CA-95E0-3EF169862F9F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{3E7C3762-9F79-438A-AEB0-F8D67515C3EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{B914DD8C-5E5B-4A83-A352-6C5733737D31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,7 +30,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37} = {9018316F-BBA3-45C8-B15D-3B0D56FE75FE}
+		{6CDE7F9A-44FE-4A9F-8A0F-0C902EECCC37} = {B914DD8C-5E5B-4A83-A352-6C5733737D31}
+		{E7B7EA53-0A55-49CA-95E0-3EF169862F9F} = {9018316F-BBA3-45C8-B15D-3B0D56FE75FE}
+		{3E7C3762-9F79-438A-AEB0-F8D67515C3EC} = {E7B7EA53-0A55-49CA-95E0-3EF169862F9F}
+		{B914DD8C-5E5B-4A83-A352-6C5733737D31} = {3E7C3762-9F79-438A-AEB0-F8D67515C3EC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EBAAD8C-09EA-4FBD-A644-3267E2B056BA}
