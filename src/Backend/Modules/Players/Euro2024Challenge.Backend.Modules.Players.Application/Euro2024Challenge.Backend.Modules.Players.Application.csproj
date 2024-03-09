@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Euro2024Challenge.Backend.Modules.Players.Domain\Euro2024Challenge.Backend.Modules.Players.Domain.csproj" />
   </ItemGroup>
 
