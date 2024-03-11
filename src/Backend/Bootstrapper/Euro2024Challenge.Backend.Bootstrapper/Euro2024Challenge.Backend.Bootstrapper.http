@@ -1,0 +1,6 @@
+@Euro2024Challenge.Backend.Bootstrapper_HostAddress = http://localhost:5047
+
+GET {{Euro2024Challenge.Backend.Bootstrapper_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
