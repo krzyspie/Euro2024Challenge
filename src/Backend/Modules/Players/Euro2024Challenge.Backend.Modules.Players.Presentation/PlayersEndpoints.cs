@@ -22,7 +22,8 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
         private static async Task<IResult> CreatePlayer([FromServices] ISender sender, CreatePlayerRequest request)
         {
             await sender.Send(new CreatePlayerCommand(request.Email, request.Username));
-            return Results.Ok("Helooo");
+
+            return Results.Ok();
         }
     }
 }

@@ -1,20 +1,25 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Application.Players.Commands;
-using Euro2024Challenge.Backend.Modules.Players.Domain.Players.Repositories;
+using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
+using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 using MediatR;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Application.Players.Create
 {
-    internal sealed class CreatePlayerCommandHandler : IRequestHandler<CreatePlayerCommand, Unit>
+    internal sealed class CreatePlayerCommandHandler(IPlayersRepository playersRepository) : IRequestHandler<CreatePlayerCommand, Unit>
     {
-        private readonly IPlayersRepository _playersRepository;
-        public CreatePlayerCommandHandler(IPlayersRepository playersRepository)
-        {
-            _playersRepository = playersRepository;
-        }
+        private readonly IPlayersRepository _playersRepository = playersRepository;
 
         public async Task<Unit> Handle(CreatePlayerCommand request, CancellationToken cancellationToken)
         {
-            await _playersRepository.Create(request.Email, request.Username);
+            Player player = new()
+            {
+                Id = Guid.NewGuid(),
+                Email = request.Email,
+                Username = request.Username,
+                CreatedAt = DateTime.Now
+            };
+
+            await _playersRepository.Create(player);
 
             return Unit.Value;
         }
