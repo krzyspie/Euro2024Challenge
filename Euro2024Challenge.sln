@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Backend.M
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bootstrapper", "Bootstrapper", "{9D1D066E-592F-4CEA-AF81-5D1320950182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Bootstrapper", "src\Backend\Bootstrapper\Euro2024Challenge.Backend.Bootstrapper\Euro2024Challenge.Backend.Bootstrapper.csproj", "{7D56A22D-6B35-4097-A5F4-1C71A44CA199}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Backend.Bootstrapper", "src\Backend\Bootstrapper\Euro2024Challenge.Backend.Bootstrapper\Euro2024Challenge.Backend.Bootstrapper.csproj", "{7D56A22D-6B35-4097-A5F4-1C71A44CA199}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Players.Api", "src\Backend\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api.csproj", "{F3F646C4-7DA2-4B32-9B69-F1466D6F951B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Backend.Modules.Players.Api", "src\Backend\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api.csproj", "{F3F646C4-7DA2-4B32-9B69-F1466D6F951B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

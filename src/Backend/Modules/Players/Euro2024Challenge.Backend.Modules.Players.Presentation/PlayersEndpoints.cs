@@ -5,6 +5,7 @@ using MediatR;
 
 using Euro2024Challenge.Backend.Modules.Players.Application.Players.Create;
 using Euro2024Challenge.Backend.Modules.Players.Application.Players.Commands;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Presentation
 {
@@ -14,15 +15,14 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
         {
             var players = app.MapGroup("players-module/players");
 
-            players.MapPost("", () => CreatePlayer)
+            players.MapPost("", CreatePlayer)
                 .Produces(201);
         }
 
-        private static async Task<IResult> CreatePlayer(ISender sender, CreatePlayerRequest createPlayerRequest)
+        private static async Task<IResult> CreatePlayer([FromServices] ISender sender, CreatePlayerRequest request)
         {
-            await sender.Send(new CreatePlayerCommand(createPlayerRequest.Email, createPlayerRequest.Username));
-
-            return Results.Ok();
+            await sender.Send(new CreatePlayerCommand(request.Email, request.Username));
+            return Results.Ok("Helooo");
         }
     }
 }
