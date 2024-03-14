@@ -1,7 +1,7 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
 using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 
-namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Repositories
+namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repositories
 {
     internal class PlayersRepository : IPlayersRepository
     {
