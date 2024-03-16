@@ -1,7 +1,7 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 using Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database;
 using Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repositories;
-using Microsoft.EntityFrameworkCore;
+using Euro2024Challenge.Shared.Database;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure
@@ -11,8 +11,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services
-                .AddDbContext<PlayersDbContext>(
-                    option => option.UseSqlServer())
+                .AddSqlServer<PlayersDbContext>()
                 .AddScoped<IPlayersRepository, PlayersRepository>();
 
             return services;
