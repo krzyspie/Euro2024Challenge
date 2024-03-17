@@ -2,5 +2,8 @@
 {
     public class TurnamentWinnerBet : BaseEntity
     {
+        public Guid PlayerId { get; set; }
+
+        public Guid TeamId { get; set; }
     }
 }
