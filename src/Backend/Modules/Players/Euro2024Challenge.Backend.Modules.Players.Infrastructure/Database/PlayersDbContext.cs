@@ -6,7 +6,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database
     internal class PlayersDbContext : DbContext
     {
         public DbSet<Player> Players { get; set; }
-        public DbSet<MatchBet> MatchesMets { get; set; }
+        public DbSet<MatchBet> MatchMets { get; set; }
         public DbSet<TopScorerBet> TopScorerBets { get; set; }
         public DbSet<TurnamentWinnerBet> TurnamentWinnerBets { get; set; }
 
@@ -17,6 +17,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasDefaultSchema("players");
+            modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
     }
 }
