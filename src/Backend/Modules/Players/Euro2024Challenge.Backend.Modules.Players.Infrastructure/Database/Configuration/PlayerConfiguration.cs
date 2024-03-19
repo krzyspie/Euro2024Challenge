@@ -11,10 +11,14 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Conf
             builder.ToTable("Players");
 
             builder.Property(x => x.Email)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(100);
 
             builder.Property(x => x.Username)
-                .IsRequired();
+                .IsRequired()
+                .HasMaxLength(25);
+
+            builder.HasIndex(x => x.Email).IsUnique();
         }
     }
 }
