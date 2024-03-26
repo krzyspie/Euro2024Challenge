@@ -1,4 +1,5 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Application.Bets.Create;
+using Euro2024Challenge.Backend.Modules.Players.Application.Players.Commands;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -13,6 +14,9 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
         {
             var playerBets = app.MapGroup("players-module/player-bets");
 
+            playerBets.MapGet("/{playerId}", GetPlayerBets)
+                .Produces(200);
+
             playerBets.MapPost("/match-bet", CreateMatchBet)
                 .Produces(201);
 
@@ -21,6 +25,8 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
 
             playerBets.MapPost("/turnament-winner", CreateTurnamentWinnerBet)
                 .Produces(201);
+
+
         }
 
         private static async Task<IResult> CreateMatchBet([FromServices] ISender sender, CreateMatchBetRequest request)
@@ -40,6 +46,13 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
         private static async Task<IResult> CreateTurnamentWinnerBet([FromServices] ISender sender, CreateTurnamentWinnerBetRequest request)
         {
             await sender.Send(new CreateTurnamentWinnerBetCommand(request.PlayerId, request.TeamId));
+
+            return Results.Ok();
+        }
+
+        private static async Task<IResult> GetPlayerBets([FromServices] ISender sender, Guid playerId)
+        {
+            await sender.Send(new GetPlayerBetsCommand(playerId));
 
             return Results.Ok();
         }
