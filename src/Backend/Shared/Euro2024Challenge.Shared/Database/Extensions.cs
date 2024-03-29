@@ -8,7 +8,7 @@ namespace Euro2024Challenge.Shared.Database
     {
         public static IServiceCollection AddSqlServer<T>(this IServiceCollection services) where T : DbContext
         {
-            services.ConfigureOptions<DatabaseOptions>();
+            services.ConfigureOptions<DatabaseOptionsSetup>();
             services.AddDbContext<T>((serviceProvider, option) =>
             {
                 var databaseOptions = serviceProvider.GetService<IOptions<DatabaseOptions>>()!.Value;
