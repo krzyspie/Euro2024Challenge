@@ -11,7 +11,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
             services
-                .AddSqlServer<PlayersDbContext>()
+                .AddPostgres<PlayersDbContext>()
                 .AddScoped<IPlayersRepository, PlayersRepository>();
 
             return services;

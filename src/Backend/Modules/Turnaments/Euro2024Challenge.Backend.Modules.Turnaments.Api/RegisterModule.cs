@@ -8,7 +8,7 @@ namespace Euro2024Challenge.Backend.Modules.Turnaments.Api
 {
     public static class RegisterModule
     {
-        public static IServiceCollection RegisterPlayersModule(this IServiceCollection services)
+        public static IServiceCollection RegisterTurnamentsModule(this IServiceCollection services)
         {
              services
                 .AddCore()
