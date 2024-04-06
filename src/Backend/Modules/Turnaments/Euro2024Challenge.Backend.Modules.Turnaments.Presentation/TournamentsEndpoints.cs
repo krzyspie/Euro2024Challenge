@@ -6,11 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Euro2024Challenge.Backend.Modules.Turnaments.Presentation
 {
-    public static class TurnamentsEndpoints
+    public static class TournamentsEndpoints
     {
-        public static void MapTurnamentsEndpoints(this IEndpointRouteBuilder app)
+        public static void MapTournamentsEndpoints(this IEndpointRouteBuilder app)
         {
-            var players = app.MapGroup("turnaments-module/");
+            var players = app.MapGroup("tournaments-module/");
         }
     }
 }
