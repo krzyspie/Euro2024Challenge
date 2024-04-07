@@ -1,5 +1,5 @@
 using Euro2024Challenge.Backend.Modules.Players.Api;
-using Euro2024Challenge.Backend.Modules.Turnaments.Api;
+using Euro2024Challenge.Backend.Modules.Tournaments.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
