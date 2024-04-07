@@ -8,7 +8,7 @@ namespace Euro2024Challenge.Backend.Modules.Turnaments.Api
 {
     public static class RegisterModule
     {
-        public static IServiceCollection RegisterTurnamentsModule(this IServiceCollection services)
+        public static IServiceCollection RegisterTournamentsModule(this IServiceCollection services)
         {
              services
                 .AddCore()
@@ -17,9 +17,9 @@ namespace Euro2024Challenge.Backend.Modules.Turnaments.Api
             return services;
         }
 
-        public static IEndpointRouteBuilder UseTurnamentsModules(this IEndpointRouteBuilder app)
+        public static IEndpointRouteBuilder UseTournamentsModules(this IEndpointRouteBuilder app)
         {
-            app.MapTurnamentsEndpoints();
+            app.MapTournamentsEndpoints();
 
             return app;
         }
