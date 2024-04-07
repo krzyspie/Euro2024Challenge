@@ -15,7 +15,7 @@ namespace Euro2024Challenge.Shared.Database
 
         public void Configure(DatabaseOptions options)
         {
-            string connectionString = _configuration.GetConnectionString("SqlServer");
+            string connectionString = _configuration.GetConnectionString("DbConnection");
 
             options.ConnectionString = connectionString;
 

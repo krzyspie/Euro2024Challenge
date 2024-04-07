@@ -9,7 +9,7 @@ namespace Euro2024Challenge.Backend.Modules.Turnaments.Core
         public static IServiceCollection AddCore(this IServiceCollection services)
         {
             services
-                .AddPostgres<TurnamentDbContext>();
+                .AddPostgres<TournamentDbContext>();
 
             return services;
         }

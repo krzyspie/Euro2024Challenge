@@ -1,11 +1,16 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
 using Euro2024Challenge.Shared.Database;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database
 {
-    internal class PlayersDbContext : BaseDbContext
+    internal class PlayersDbContext : DbContext
     {
+        public PlayersDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<Player> Players { get; set; }
         public DbSet<MatchBet> MatchMets { get; set; }
         public DbSet<TopScorerBet> TopScorerBets { get; set; }

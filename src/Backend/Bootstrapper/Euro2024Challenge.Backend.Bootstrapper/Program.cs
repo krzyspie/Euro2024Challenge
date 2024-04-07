@@ -7,7 +7,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.RegisterPlayersModule();
-builder.Services.RegisterTurnamentsModule();
+builder.Services.RegisterTournamentsModule();
 
 var app = builder.Build(); 
 
