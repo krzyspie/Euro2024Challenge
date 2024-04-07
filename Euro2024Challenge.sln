@@ -31,13 +31,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E740FA
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Shared", "src\Backend\Shared\Euro2024Challenge.Shared\Euro2024Challenge.Shared.csproj", "{50AE4CD6-9F4D-4759-9DAB-E1FEF36E012F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Turnaments", "Turnaments", "{95AB50FB-97F3-4A06-A8A0-B43519EE28C6}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tournaments", "Tournaments", "{95AB50FB-97F3-4A06-A8A0-B43519EE28C6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Backend.Modules.Turnaments.Api", "src\Backend\Modules\Turnaments\Euro2024Challenge.Backend.Modules.Turnaments.Api\Euro2024Challenge.Backend.Modules.Turnaments.Api.csproj", "{FDCB3E86-800C-46A9-8AC5-703A133CBD44}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Euro2024Challenge.Backend.Modules.Tournaments.Api", "src\Backend\Modules\Turnaments\Euro2024Challenge.Backend.Modules.Tournaments.Api\Euro2024Challenge.Backend.Modules.Tournaments.Api.csproj", "{FDCB3E86-800C-46A9-8AC5-703A133CBD44}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Turnaments.Presentation", "src\Backend\Modules\Turnaments\Euro2024Challenge.Backend.Modules.Turnaments.Presentation\Euro2024Challenge.Backend.Modules.Turnaments.Presentation.csproj", "{C2C1DD88-B49B-44E0-9B27-2ED6D1D66AF2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Tournaments.Presentation", "src\Backend\Modules\Turnaments\Euro2024Challenge.Backend.Modules.Tournaments.Presentation\Euro2024Challenge.Backend.Modules.Tournaments.Presentation.csproj", "{C2C1DD88-B49B-44E0-9B27-2ED6D1D66AF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Turnaments.Core", "src\Backend\Modules\Turnaments\Euro2024Challenge.Backend.Modules.Turnaments.Core\Euro2024Challenge.Backend.Modules.Turnaments.Core.csproj", "{6FF47A95-A0DE-456B-8CD2-A2A5AF485010}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Tournaments.Core", "src\Backend\Modules\Turnaments\Euro2024Challenge.Backend.Modules.Tournaments.Core\Euro2024Challenge.Backend.Modules.Tournaments.Core.csproj", "{6FF47A95-A0DE-456B-8CD2-A2A5AF485010}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

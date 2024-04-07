@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <RootNamespace>Euro2024Challenge.Backend.Modules.Turnaments.Core</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

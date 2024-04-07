@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api.csproj" />
-    <ProjectReference Include="..\..\Modules\Turnaments\Euro2024Challenge.Backend.Modules.Turnaments.Api\Euro2024Challenge.Backend.Modules.Turnaments.Api.csproj" />
+    <ProjectReference Include="..\..\Modules\Turnaments\Euro2024Challenge.Backend.Modules.Tournaments.Api\Euro2024Challenge.Backend.Modules.Tournaments.Api.csproj" />
   </ItemGroup>
 
 </Project>
