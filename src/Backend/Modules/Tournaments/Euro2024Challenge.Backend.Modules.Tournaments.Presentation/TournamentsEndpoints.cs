@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing;
-
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
 {
@@ -10,7 +12,35 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
     {
         public static void MapTournamentsEndpoints(this IEndpointRouteBuilder app)
         {
-            var players = app.MapGroup("tournaments-module/");
+            var tournaments = app.MapGroup("tournaments-module/");
+        }
+        
+        private static async Task<IResult> AddMatch([FromServices] IMatchService matchService, AddMatchRequest request)
+        {
+            await matchService.Add(new Match());
+
+            return Results.Ok();
+        }
+        
+        private static async Task<IResult> UpdateMatchResult([FromServices] IMatchService matchService, UpdateMatchResultRequest request)
+        {
+            await matchService.UpdateResult(request.Number, request.GuestTeamGoals, request.AwayTeamGoals);
+
+            return Results.Ok();
+        }
+        
+        private static async Task<IResult> GetAllMatches([FromServices] IMatchService matchService)
+        {
+            await matchService.GetAll();
+
+            return Results.Ok();
+        }
+        
+        private static async Task<IResult> GetMatch([FromServices] IMatchService matchService, int number)
+        {
+            await matchService.GetByNumber(number);
+
+            return Results.Ok();
         }
     }
 }
