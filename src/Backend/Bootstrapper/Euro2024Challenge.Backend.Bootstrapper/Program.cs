@@ -21,4 +21,6 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UsePlayersModules();
+app.UseTournamentsModules();
+
 app.Run();

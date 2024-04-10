@@ -13,6 +13,15 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
         public static void MapTournamentsEndpoints(this IEndpointRouteBuilder app)
         {
             var tournaments = app.MapGroup("tournaments-module/");
+
+            tournaments.MapPost("match", AddMatch)
+                .Produces(201);
+            
+            tournaments.MapPut("match", UpdateMatchResult)
+                .Produces(200);
+            
+            tournaments.MapGet("match", GetMatch)
+                .Produces(200);
         }
         
         private static async Task<IResult> AddMatch([FromServices] IMatchService matchService, AddMatchRequest request)
@@ -38,9 +47,9 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
         
         private static async Task<IResult> GetMatch([FromServices] IMatchService matchService, int number)
         {
-            await matchService.GetByNumber(number);
+            Match match = await matchService.GetByNumber(number);
 
-            return Results.Ok();
+            return Results.Ok(new MatchResponse(match.Id, match.Number, match.GuestTeamId, match.AwayTeamId, match.GuestTeamId, match.AwayTeamGoals, match.StartHour));
         }
         
         private static async Task<IResult> GetTeam([FromServices] ITeamService teamService, int id)
