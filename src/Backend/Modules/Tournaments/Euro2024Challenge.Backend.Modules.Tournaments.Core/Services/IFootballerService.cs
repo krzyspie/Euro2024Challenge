@@ -5,6 +5,6 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 public interface IFootballerService
 {
     Task Add(Footballer footballer);
-    Task UpdateGoals(int goals);
+    Task UpdateGoals(int id, int goals);
     Task<Footballer> Get(int id);
 }

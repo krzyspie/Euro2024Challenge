@@ -42,5 +42,26 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
 
             return Results.Ok();
         }
+        
+        private static async Task<IResult> GetTeam([FromServices] ITeamService teamService, int id)
+        {
+            await teamService.Get(id);
+
+            return Results.Ok();
+        }
+        
+        private static async Task<IResult> GetFootballer([FromServices] IFootballerService footballerService, int id)
+        {
+            await footballerService.Get(id);
+
+            return Results.Ok();
+        }
+        
+        private static async Task<IResult> UpdateFootballerGoals([FromServices] IFootballerService footballerService, int id, UpdateFootballerGoalsRequest request)
+        {
+            await footballerService.UpdateGoals(id, request.Goals);
+
+            return Results.Ok();
+        }
     }
 }

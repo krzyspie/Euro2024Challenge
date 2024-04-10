@@ -17,9 +17,9 @@ public class FootballerService : IFootballerService
         await _footballerRepository.Add(footballer);
     }
 
-    public async Task UpdateGoals(int goals)
+    public async Task UpdateGoals(int id, int goals)
     {
-        await _footballerRepository.UpdateGoals(goals);
+        await _footballerRepository.UpdateGoals(id, goals);
     }
 
     public async Task<Footballer> Get(int id)

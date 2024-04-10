@@ -17,7 +17,7 @@ public class FootballerRepository : IFootballerRepository
         throw new NotImplementedException();
     }
 
-    public Task UpdateGoals(int goals)
+    public Task UpdateGoals(int id, int goals)
     {
         throw new NotImplementedException();
     }
