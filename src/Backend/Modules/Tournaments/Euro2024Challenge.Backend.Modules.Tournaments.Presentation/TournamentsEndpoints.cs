@@ -1,5 +1,6 @@
 ﻿using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -49,7 +50,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
         {
             Match match = await matchService.GetByNumber(number);
 
-            return Results.Ok(new MatchResponse(match.Id, match.Number, match.GuestTeamId, match.AwayTeamId, match.GuestTeamId, match.AwayTeamGoals, match.StartHour));
+            return Results.Ok(match.ToMatchResponse());
         }
         
         private static async Task<IResult> GetTeam([FromServices] ITeamService teamService, int id)
