@@ -8,7 +8,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Database.Configurat
     {
         public void Configure(EntityTypeBuilder<Footballer> builder)
         {
-            builder.HasIndex(x => x.FullName).IsUnique();
+            builder.HasIndex(x => new { x.FullName, x.Team }).IsUnique();
         }
     }
 }
