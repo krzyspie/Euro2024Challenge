@@ -23,6 +23,6 @@ I want to develop both the backend and frontend to create a fully functional app
 ## Tech stack
 - .NET 8
 - C#
-- MSSQL
+- Postgres
 - EF Core
 - React
