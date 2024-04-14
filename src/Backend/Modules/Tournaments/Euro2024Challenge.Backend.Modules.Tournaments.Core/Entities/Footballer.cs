@@ -7,6 +7,6 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities
         public int Golas { get; set; }
         
         public int TeamId { get; set; }
-        public Team Team { get; set; }
+        public Team Team { get; set; } = null!;
     }
 }

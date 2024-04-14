@@ -8,6 +8,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Database.Configurat
     {
         public void Configure(EntityTypeBuilder<Team> builder)
         {
+            builder.Property(x => x.Name).HasMaxLength(16);
             builder.HasIndex(x => x.Name).IsUnique();
         }
     }
