@@ -83,6 +83,37 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Database.Migrations
                 table: "Teams",
                 column: "Name",
                 unique: true);
+            
+            migrationBuilder.InsertData(
+                table: "Teams",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Albania" },
+                    { 2, "Austria" },
+                    { 3, "Belgium" },
+                    { 4, "Croatia" },
+                    { 5, "Czechia" },
+                    { 6, "Denmark" },
+                    { 7, "England" },
+                    { 8, "France" },
+                    { 9, "Georgia" },
+                    { 10, "Germany" },
+                    { 11, "Hungary" },
+                    { 12, "Italy" },
+                    { 13, "Netherlands" },
+                    { 14, "Poland" },
+                    { 15, "Portugal" },
+                    { 16, "Romania" },
+                    { 17, "Scotland" },
+                    { 18, "Serbia" },
+                    { 19, "Slovakia" },
+                    { 20, "Slovenia" },
+                    { 21, "Spain" },
+                    { 22, "Switzerland" },
+                    { 23, "Türkiye" },
+                    { 24, "Ukraine" }
+                });
         }
 
         /// <inheritdoc />
