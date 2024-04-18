@@ -6,6 +6,6 @@
 
         public PlayerTopScorerBetDto TopScorerBet { get; set; }
 
-        public PlayerTurnamentWinnerBetDto TurnamenetWinner { get; set; }
+        public PlayerTournamentWinnerBetDto TurnamenetWinner { get; set; }
     }
 }

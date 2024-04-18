@@ -12,9 +12,9 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database
         }
 
         public DbSet<Player> Players { get; set; }
-        public DbSet<MatchBet> MatchMets { get; set; }
+        public DbSet<MatchBet> MatchBets { get; set; }
         public DbSet<TopScorerBet> TopScorerBets { get; set; }
-        public DbSet<TurnamentWinnerBet> TurnamentWinnerBets { get; set; }
+        public DbSet<TournamentWinnerBet> TournamentWinnerBets { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

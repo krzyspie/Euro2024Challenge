@@ -1,5 +1,4 @@
-﻿using Euro2024Challenge.Backend.Modules.Players.Application.Players.Commands;
-using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
+﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
 using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 using MediatR;
 

@@ -1,5 +1,5 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Application.Bets.Create;
-using Euro2024Challenge.Backend.Modules.Players.Application.Players.Commands;
+using Euro2024Challenge.Backend.Modules.Players.Application.Players.Get;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -43,9 +43,9 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
             return Results.Ok();
         }
 
-        private static async Task<IResult> CreateTurnamentWinnerBet([FromServices] ISender sender, CreateTurnamentWinnerBetRequest request)
+        private static async Task<IResult> CreateTurnamentWinnerBet([FromServices] ISender sender, CreateTournamentWinnerBetRequest request)
         {
-            await sender.Send(new CreateTurnamentWinnerBetCommand(request.PlayerId, request.TeamId));
+            await sender.Send(new CreateTournamentWinnerBetCommand(request.PlayerId, request.TeamId));
 
             return Results.Ok();
         }
