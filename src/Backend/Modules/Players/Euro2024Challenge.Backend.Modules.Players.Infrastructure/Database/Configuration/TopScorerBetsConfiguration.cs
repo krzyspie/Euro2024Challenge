@@ -8,6 +8,6 @@ internal class TopScorerBetsConfiguration : IEntityTypeConfiguration<TopScorerBe
 {
     public void Configure(EntityTypeBuilder<TopScorerBet> builder)
     {
-        
+        builder.ToTable("TopScorerBet");
     }
 }

@@ -8,6 +8,6 @@ public class TournamentWinnerBetsConfiguration : IEntityTypeConfiguration<Tourna
 {
     public void Configure(EntityTypeBuilder<TournamentWinnerBet> builder)
     {
-        
+        builder.ToTable("TournamentWinnerBets");
     }
 }
