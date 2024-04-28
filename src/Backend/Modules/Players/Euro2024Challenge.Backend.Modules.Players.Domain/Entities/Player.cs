@@ -1,6 +1,8 @@
-﻿namespace Euro2024Challenge.Backend.Modules.Players.Domain.Entities
+﻿using Euro2024Challenge.Shared.Domain;
+
+namespace Euro2024Challenge.Backend.Modules.Players.Domain.Entities
 {
-    public sealed class Player : BaseEntity
+    public sealed class Player : BaseEntity, IAggregateRoot
     {
         public required string Email { get; set; }
         public required string Username { get; set; }
