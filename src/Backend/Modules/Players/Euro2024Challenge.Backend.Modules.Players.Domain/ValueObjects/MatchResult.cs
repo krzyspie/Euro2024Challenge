@@ -23,4 +23,6 @@ public class MatchResult : ValueObject
         yield return HomeTeamGoals;
         yield return AwayTeamGoals;
     }
+    
+    public override string ToString() => $"{HomeTeamGoals} : {AwayTeamGoals}";
 }
