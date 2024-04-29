@@ -18,6 +18,15 @@ public class MatchResult : ValueObject
         return new MatchResult(homeTeamGoals, awayTeamGoals);
     }
 
+    public static MatchResult CreateNew(string result)
+    {
+        string[] goals = result.Split(':');
+        return new MatchResult(
+            ushort.Parse(goals[0]), 
+            ushort.Parse(goals[1])
+            );
+    }
+    
     protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return HomeTeamGoals;

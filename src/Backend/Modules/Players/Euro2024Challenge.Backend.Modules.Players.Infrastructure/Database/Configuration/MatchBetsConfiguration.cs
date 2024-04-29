@@ -1,4 +1,5 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
+using Euro2024Challenge.Backend.Modules.Players.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -12,6 +13,10 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Conf
 
             builder.Property(x => x.PlayerId)
                 .IsRequired();
+            builder.Property(x => x.Result)
+                .HasConversion(v => $"{v.HomeTeamGoals} : {v.AwayTeamGoals}",
+                    v => MatchResult.CreateNew(v));
+
         }
     }
 }
