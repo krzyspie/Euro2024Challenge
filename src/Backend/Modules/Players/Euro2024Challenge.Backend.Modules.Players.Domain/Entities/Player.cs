@@ -7,8 +7,8 @@ namespace Euro2024Challenge.Backend.Modules.Players.Domain.Entities
         public required string Email { get; set; }
         public required string Username { get; set; }
 
-        public TopScorerBet TopScorerBet { get; set; }
-        public TournamentWinnerBet TournamentWinnerBet { get; set; }
-        public ICollection<MatchBet> MatchBets { get; set; }
+        public TopScorerBet TopScorerBet { get; set; } = null!;
+        public TournamentWinnerBet TournamentWinnerBet { get; set; } = null!;
+        public ICollection<MatchBet> MatchBets { get; set; } = new List<MatchBet>();
     }
 }

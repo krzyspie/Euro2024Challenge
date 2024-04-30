@@ -4,7 +4,7 @@
     {
         public Guid PlayerId { get; set; }
 
-        public Guid FootballerId { get; set; }
+        public int FootballerId { get; set; }
 
         public int Goals { get; set; }
     }
