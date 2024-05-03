@@ -2,6 +2,8 @@
 {
     public class PlayerBetsDto
     {
+        public Guid PlayerId { get; set; }
+        
         public IEnumerable<PlayerMatchBetDto> MatchBets { get; set; }
 
         public PlayerTopScorerBetDto TopScorerBet { get; set; }
