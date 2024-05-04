@@ -39,8 +39,10 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Migr
                         .HasColumnType("uuid");
 
                     b.Property<string>("Result")
-                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int>("Winner")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
