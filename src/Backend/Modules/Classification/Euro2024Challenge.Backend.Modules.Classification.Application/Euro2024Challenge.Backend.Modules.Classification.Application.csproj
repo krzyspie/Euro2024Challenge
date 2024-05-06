@@ -10,4 +10,8 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Euro2024Challenge.Backend.Modules.Classification.Domain\Euro2024Challenge.Backend.Modules.Classification.Domain.csproj" />
+    </ItemGroup>
+
 </Project>

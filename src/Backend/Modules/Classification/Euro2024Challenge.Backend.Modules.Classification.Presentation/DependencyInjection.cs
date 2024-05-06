@@ -1,5 +1,11 @@
-﻿namespace Euro2024Challenge.Backend.Modules.Classification.Presentation;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-public class DependencyInjection
+namespace Euro2024Challenge.Backend.Modules.Classification.Presentation;
+
+public static class DependencyInjection
 {
+    public static IServiceCollection AddPresentation(this IServiceCollection services)
+    {
+        return services;
+    }
 }

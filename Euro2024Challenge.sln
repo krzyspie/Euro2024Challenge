@@ -47,6 +47,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Classification.Infrastructure", "src\Backend\Modules\Classification\Euro2024Challenge.Backend.Modules.Classification.Infrastructure\Euro2024Challenge.Backend.Modules.Classification.Infrastructure.csproj", "{618E0B30-9257-4D6C-91AF-A2D95A1CDF2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Euro2024Challenge.Backend.Modules.Classification.Application", "src\Backend\Modules\Classification\Euro2024Challenge.Backend.Modules.Classification.Application\Euro2024Challenge.Backend.Modules.Classification.Application.csproj", "{8C3D8463-D149-4DA2-BCA3-0FA2B06DD36C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -109,6 +111,10 @@ Global
 		{618E0B30-9257-4D6C-91AF-A2D95A1CDF2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{618E0B30-9257-4D6C-91AF-A2D95A1CDF2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{618E0B30-9257-4D6C-91AF-A2D95A1CDF2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C3D8463-D149-4DA2-BCA3-0FA2B06DD36C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C3D8463-D149-4DA2-BCA3-0FA2B06DD36C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C3D8463-D149-4DA2-BCA3-0FA2B06DD36C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C3D8463-D149-4DA2-BCA3-0FA2B06DD36C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

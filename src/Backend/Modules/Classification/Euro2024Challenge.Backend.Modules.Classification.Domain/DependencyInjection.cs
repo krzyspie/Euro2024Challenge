@@ -1,5 +1,11 @@
-﻿namespace Euro2024Challenge.Backend.Modules.Classification.Domain;
+﻿using Microsoft.Extensions.DependencyInjection;
 
-public class DependencyInjection
+namespace Euro2024Challenge.Backend.Modules.Classification.Domain;
+
+public static class DependencyInjection
 {
+    public static IServiceCollection AddDomain(this IServiceCollection services)
+    {
+        return services;
+    }
 }
