@@ -1,4 +1,4 @@
-﻿namespace Euro2024Challenge.Backend.Modules.Players.Domain.Entities
+﻿namespace Euro2024Challenge.Shared.Domain
 {
     public class BaseEntity
     {

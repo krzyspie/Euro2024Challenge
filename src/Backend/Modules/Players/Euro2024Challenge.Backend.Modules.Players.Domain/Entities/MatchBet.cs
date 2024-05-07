@@ -1,5 +1,6 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Enums;
 using Euro2024Challenge.Backend.Modules.Players.Domain.ValueObjects;
+using Euro2024Challenge.Shared.Domain;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Domain.Entities
 {
