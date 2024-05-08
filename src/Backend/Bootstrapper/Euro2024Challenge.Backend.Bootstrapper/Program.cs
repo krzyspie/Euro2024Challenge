@@ -1,3 +1,4 @@
+using Euro2024Challenge.Backend.Modules.Classification.Api;
 using Euro2024Challenge.Backend.Modules.Players.Api;
 using Euro2024Challenge.Backend.Modules.Tournaments.Api;
 
@@ -8,6 +9,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.RegisterPlayersModule();
 builder.Services.RegisterTournamentsModule();
+builder.Services.RegisterClassificationModule();
 
 var app = builder.Build(); 
 
@@ -22,5 +24,6 @@ app.UseHttpsRedirection();
 
 app.UsePlayersModules();
 app.UseTournamentsModules();
+app.UseClassificationModules();
 
 app.Run();
