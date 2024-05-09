@@ -10,7 +10,7 @@ public static class ClassificationEndpoints
     {
         var classifications = app.MapGroup("classifications-module/classifications");
         
-        classifications.MapGet("/{playerId}", GetClassifications)
+        classifications.MapGet("", GetClassifications)
             .Produces(200);
     }
     
