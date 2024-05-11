@@ -6,5 +6,6 @@ public interface IClassificationRepository
 {
     Task<IEnumerable<PlayerPoints>> GetAll();
 
-    Task Add(PlayerPoints points);
+    Task Insert(PlayerPoints points);
+    Task<PlayerPoints> Get(Guid playerId);
 }

@@ -10,7 +10,12 @@ public class PlayersClassificationRepository : IClassificationRepository
         throw new NotImplementedException();
     }
 
-    public Task Add(PlayerPoints points)
+    public Task Insert(PlayerPoints points)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<PlayerPoints> Get(Guid playerId)
     {
         throw new NotImplementedException();
     }
