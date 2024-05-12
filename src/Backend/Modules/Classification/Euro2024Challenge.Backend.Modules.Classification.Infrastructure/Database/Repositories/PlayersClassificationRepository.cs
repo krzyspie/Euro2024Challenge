@@ -5,7 +5,7 @@ namespace Euro2024Challenge.Backend.Modules.Classification.Infrastructure.Databa
 
 public class PlayersClassificationRepository : IClassificationRepository
 {
-    public Task<IEnumerable<PlayerPoints>> GetAll()
+    public Task<IEnumerable<PlayersPoints>> GetAll()
     {
         throw new NotImplementedException();
     }
