@@ -1,7 +1,5 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
-using Euro2024Challenge.Shared.Database;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database
 {
