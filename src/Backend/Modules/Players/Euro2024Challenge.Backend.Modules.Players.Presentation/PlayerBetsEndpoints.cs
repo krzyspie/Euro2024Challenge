@@ -23,7 +23,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
             playerBets.MapPost("/top-scorer", CreateTopScorerBet)
                 .Produces(201);
 
-            playerBets.MapPost("/tournament-winner", CreateTurnamentWinnerBet)
+            playerBets.MapPost("/tournament-winner", CreateTournamentWinnerBet)
                 .Produces(201);
 
 
@@ -43,7 +43,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
             return Results.Ok();
         }
 
-        private static async Task<IResult> CreateTurnamentWinnerBet([FromServices] ISender sender, CreateTournamentWinnerBetRequest request)
+        private static async Task<IResult> CreateTournamentWinnerBet([FromServices] ISender sender, CreateTournamentWinnerBetRequest request)
         {
             await sender.Send(new CreateTournamentWinnerBetCommand(request.PlayerId, request.TeamId));
 
