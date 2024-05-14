@@ -23,7 +23,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
             playerBets.MapPost("/top-scorer", CreateTopScorerBet)
                 .Produces(201);
 
-            playerBets.MapPost("/turnament-winner", CreateTurnamentWinnerBet)
+            playerBets.MapPost("/tournament-winner", CreateTurnamentWinnerBet)
                 .Produces(201);
 
 

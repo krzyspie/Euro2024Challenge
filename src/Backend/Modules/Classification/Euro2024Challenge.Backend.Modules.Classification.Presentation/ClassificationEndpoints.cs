@@ -12,9 +12,17 @@ public static class ClassificationEndpoints
         
         classifications.MapGet("", GetClassifications)
             .Produces(200);
+        
+        classifications.MapGet("{playerId:guid}", GetPlayerClassifications)
+            .Produces(200);
     }
     
     private static Task<IResult> GetClassifications()
+    {
+        return Task.FromResult(Results.Ok());
+    }
+    
+    private static Task<IResult> GetPlayerClassifications(Guid playerId)
     {
         return Task.FromResult(Results.Ok());
     }
