@@ -16,18 +16,23 @@ public class PlayersClassificationRepository : IClassificationRepository
         var mongoDatabase = mongoClient.GetDatabase(options.Value.DatabaseName);
         _playersClassificationCollection = mongoDatabase.GetCollection<PlayerPoints>(options.Value.CollectionName);
     }
-    public Task<IEnumerable<PlayersPoints>> GetAll()
+    public async Task<List<PlayersPoints>> GetAll()
     {
-        throw new NotImplementedException();
+        var result = await _playersClassificationCollection.Find(_ => true).ToListAsync();
+
+        return null;
     }
 
-    public Task Insert(PlayerPoints points)
+    public async Task Insert(PlayerPoints points)
     {
-        throw new NotImplementedException();
+        await _playersClassificationCollection.InsertOneAsync(points);
     }
 
-    public Task<PlayerPoints> Get(Guid playerId)
+    public async Task<PlayerPoints> Get(Guid playerId)
     {
-        throw new NotImplementedException();
+        var filter = Builders<PlayerPoints>.Filter.Eq("player_id", playerId);
+        var result = await _playersClassificationCollection.Find(filter).FirstOrDefaultAsync();
+        
+        return null;
     }
 }

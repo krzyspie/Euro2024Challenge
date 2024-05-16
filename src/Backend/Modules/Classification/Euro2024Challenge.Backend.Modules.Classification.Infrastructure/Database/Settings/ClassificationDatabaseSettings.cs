@@ -1,6 +1,6 @@
 namespace Euro2024Challenge.Backend.Modules.Classification.Infrastructure.Database.Settings;
 
-public abstract class ClassificationDatabaseSettings
+public class ClassificationDatabaseSettings
 {
     public string ConnectionString { get; set; } = null!;
 
