@@ -17,6 +17,9 @@ public static class ClassificationEndpoints
         
         classifications.MapGet("{playerId:guid}", GetPlayerClassifications)
             .Produces(200);
+        
+        classifications.MapPost("", CreatePlayerClassification)
+            .Produces(200);
     }
     
     private static async Task<IResult> GetClassifications([FromServices] IClassificationRepository repo)
@@ -26,6 +29,11 @@ public static class ClassificationEndpoints
     }
     
     private static Task<IResult> GetPlayerClassifications(Guid playerId)
+    {
+        return Task.FromResult(Results.Ok("Get for player"));
+    }
+    
+    private static Task<IResult> CreatePlayerClassification()
     {
         return Task.FromResult(Results.Ok("Get for player"));
     }
