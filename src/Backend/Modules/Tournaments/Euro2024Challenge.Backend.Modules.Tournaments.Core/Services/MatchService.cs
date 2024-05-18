@@ -12,14 +12,17 @@ public class MatchService : IMatchService
         _matchRepository = matchRepository;
     }
     
-    public async Task Add(Match match)
+    public async Task Add(Match? match)
     {
-        await _matchRepository.Add(match);
+        await _matchRepository.AddAsync(match);
     }
 
     public async Task UpdateResult(int number, int guestTeamGoals, int awayTeamsGoals)
     {
-        await _matchRepository.UpdateResult(guestTeamGoals, awayTeamsGoals);
+        Match? match = await _matchRepository.GetByNumber(number);
+        match.GuestTeamGoals = guestTeamGoals;
+        match.AwayTeamGoals = awayTeamsGoals;
+        await _matchRepository.UpdateAsync(match);
     }
 
     public async Task<IEnumerable<Match>> GetAll()
@@ -27,7 +30,7 @@ public class MatchService : IMatchService
         return await _matchRepository.GetAll();
     }
 
-    public async Task<Match> GetByNumber(int number)
+    public async Task<Match?> GetByNumber(int number)
     {
         return await _matchRepository.GetByNumber(number);
     }

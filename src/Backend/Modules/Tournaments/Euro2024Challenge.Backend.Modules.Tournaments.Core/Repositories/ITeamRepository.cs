@@ -4,6 +4,5 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 
 public interface ITeamRepository
 {
-    Task Add(Team team);
-    Task<Team> Get(int id);
+    Task<Team> GetAsync(int id);
 }

@@ -7,6 +7,6 @@ public static class FootballerExtensions
 {
     public static FootballerResponse ToTeamResponse(this Footballer footballer)
     {
-        return new FootballerResponse(footballer.Id, footballer.FullName, footballer.Golas, footballer.Team.Name);
+        return new FootballerResponse(footballer.Id, footballer.FullName, footballer.Goals, footballer.Team.Name);
     }
 }

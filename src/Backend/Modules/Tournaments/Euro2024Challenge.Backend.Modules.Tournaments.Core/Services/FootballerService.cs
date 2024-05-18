@@ -12,14 +12,12 @@ public class FootballerService : IFootballerService
         _footballerRepository = footballerRepository;
     }
 
-    public async Task Add(Footballer footballer)
-    {
-        await _footballerRepository.Add(footballer);
-    }
-
     public async Task UpdateGoals(int id, int goals)
     {
-        await _footballerRepository.UpdateGoals(id, goals);
+        Footballer footballer = await _footballerRepository.Get(id);
+        footballer.Goals = goals;
+        
+        await _footballerRepository.UpdateAsync(footballer);
     }
 
     public async Task<Footballer> Get(int id)

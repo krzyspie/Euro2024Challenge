@@ -4,8 +4,8 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 
 public interface IMatchRepository
 {
-    Task Add(Match match);
-    Task UpdateResult(int guestTeamGoals, int awayTeamGoals);
+    Task AddAsync(Match? match);
+    Task UpdateAsync(Match? match);
     Task<IEnumerable<Match>> GetAll();
-    Task<Match> GetByNumber(int number);
+    Task<Match?> GetByNumber(int number);
 }

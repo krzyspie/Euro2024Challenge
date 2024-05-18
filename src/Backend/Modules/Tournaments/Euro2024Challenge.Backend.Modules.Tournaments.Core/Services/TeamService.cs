@@ -11,14 +11,9 @@ public class TeamService : ITeamService
     {
         _teamRepository = teamRepository;
     }
-
-    public async Task Add(Team team)
-    {
-        await _teamRepository.Add(team);
-    }
-
+    
     public async Task<Team> Get(int id)
     {
-        return await _teamRepository.Get(id);
+        return await _teamRepository.GetAsync(id);
     }
 }

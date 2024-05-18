@@ -1,34 +1,39 @@
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Database;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 
 public class MatchRepository : IMatchRepository
 {
     private readonly TournamentDbContext _tournamentDbContext;
+    private readonly DbSet<Match> _matches;
 
     public MatchRepository(TournamentDbContext tournamentDbContext)
     {
         _tournamentDbContext = tournamentDbContext;
+        _matches = tournamentDbContext.Matches;
     }
     
-    public Task Add(Match match)
+    public async Task AddAsync(Match match)
     {
-        throw new NotImplementedException();
+        await _matches.AddAsync(match);
+        await _tournamentDbContext.SaveChangesAsync();
     }
 
-    public Task UpdateResult(int guestTeamGoals, int awayTeamGoals)
+    public async Task UpdateAsync(Match? match)
     {
-        throw new NotImplementedException();
+        _matches.Update(match);
+        await _tournamentDbContext.SaveChangesAsync();
     }
 
-    public Task<IEnumerable<Match>> GetAll()
+    public async Task<IEnumerable<Match>> GetAll()
     {
-        throw new NotImplementedException();
+        return await _matches.ToListAsync();
     }
 
-    public Task<Match> GetByNumber(int number)
+    public async Task<Match?> GetByNumber(int number)
     {
-        throw new NotImplementedException();
+        return await _matches.SingleOrDefaultAsync(x => x.Number == number);
     }
 }

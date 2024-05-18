@@ -1,24 +1,22 @@
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Database;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 
 public class TeamRepository : ITeamRepository
 {
     private readonly TournamentDbContext _tournamentDbContext;
+    private readonly DbSet<Team> _teams;
 
     public TeamRepository(TournamentDbContext tournamentDbContext)
     {
         _tournamentDbContext = tournamentDbContext;
+        _teams = tournamentDbContext.Teams;
     }
 
-    public Task Add(Team team)
+    public async Task<Team> GetAsync(int id)
     {
-        throw new NotImplementedException();
-    }
-
-    public Task<Team> Get(int id)
-    {
-        throw new NotImplementedException();
+        return await _teams.SingleOrDefaultAsync(x => x.Id == id);
     }
 }

@@ -48,7 +48,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
         
         private static async Task<IResult> GetMatch([FromServices] IMatchService matchService, int number)
         {
-            Match match = await matchService.GetByNumber(number);
+            Match? match = await matchService.GetByNumber(number);
 
             return Results.Ok(match.ToMatchResponse());
         }
