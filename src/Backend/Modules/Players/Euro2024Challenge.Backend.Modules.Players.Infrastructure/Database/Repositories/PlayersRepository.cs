@@ -15,9 +15,10 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repo
             _players = _context.Players;
         }
 
-        public Task Create(Player player)
+        public async Task Create(Player player)
         {
-            throw new NotImplementedException();
+            await _players.AddAsync(player);
+            await _context.SaveChangesAsync();
         }
     }
 }
