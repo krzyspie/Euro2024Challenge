@@ -12,8 +12,8 @@ public class TeamService : ITeamService
         _teamRepository = teamRepository;
     }
     
-    public async Task<Team> Get(int id)
+    public async Task<IEnumerable<Team>> GetTeamsAsync(List<int> ids)
     {
-        return await _teamRepository.GetAsync(id);
+        return await _teamRepository.GetTeamsAsync(ids);
     }
 }

@@ -12,9 +12,9 @@ public class TeamRepository : ITeamRepository
     {
         _teams = tournamentDbContext.Teams;
     }
-
-    public async Task<Team> GetAsync(int id)
+    
+    public async Task<IEnumerable<Team>> GetTeamsAsync(List<int> ids)
     {
-        return await _teams.SingleAsync(x => x.Id == id);
+        return await _teams.Where(x => ids.Contains(x.Id)).ToListAsync();
     }
 }
