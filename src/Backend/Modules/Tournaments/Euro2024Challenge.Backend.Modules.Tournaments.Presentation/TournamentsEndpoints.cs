@@ -53,11 +53,11 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
             return Results.Ok(match.ToMatchResponse());
         }
         
-        private static async Task<IResult> GetTeam([FromServices] ITeamService teamService, IEnumerable<int> ids)
+        private static async Task<IResult> GetTeams([FromServices] ITeamService teamService, IEnumerable<int> ids)
         {
-            await teamService.GetTeamsAsync(ids.ToList());
+            var teams = await teamService.GetTeamsAsync(ids.ToList());
 
-            return Results.Ok();
+            return Results.Ok(teams);
         }
         
         private static async Task<IResult> GetFootballer([FromServices] IFootballerService footballerService, int id)

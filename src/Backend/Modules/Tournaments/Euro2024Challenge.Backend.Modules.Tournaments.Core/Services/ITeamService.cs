@@ -1,8 +1,8 @@
-using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 
 public interface ITeamService
 {
-    Task<IEnumerable<Team>> GetTeamsAsync(List<int> id);
+    Task<IEnumerable<TeamResponse>> GetTeamsAsync(List<int> id);
 }
