@@ -21,7 +21,7 @@ public class MatchRepository : IMatchRepository
         await _tournamentDbContext.SaveChangesAsync();
     }
 
-    public async Task UpdateAsync(Match? match)
+    public async Task UpdateAsync(Match match)
     {
         _matches.Update(match);
         await _tournamentDbContext.SaveChangesAsync();
@@ -32,8 +32,8 @@ public class MatchRepository : IMatchRepository
         return await _matches.ToListAsync();
     }
 
-    public async Task<Match?> GetByNumber(int number)
+    public async Task<Match> GetByNumber(int number)
     {
-        return await _matches.SingleOrDefaultAsync(x => x.Number == number);
+        return await _matches.SingleAsync(x => x.Number == number);
     }
 }

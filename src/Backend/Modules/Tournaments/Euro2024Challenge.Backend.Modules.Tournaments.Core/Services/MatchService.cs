@@ -1,4 +1,6 @@
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
@@ -12,26 +14,38 @@ public class MatchService : IMatchService
         _matchRepository = matchRepository;
     }
     
-    public async Task Add(Match? match)
+    public async Task Add(AddMatchRequest matchToAdd)
     {
+        var match = new Match
+        {
+            Number = matchToAdd.Number,
+            GuestTeamId = matchToAdd.GuestTeamId,
+            AwayTeamId = matchToAdd.AwayTeamId,
+            GuestTeamGoals = matchToAdd.GuestTeamGoals,
+            AwayTeamGoals = matchToAdd.AwayTeamGoals,
+            StartHour = matchToAdd.StartHour
+        };
+        
         await _matchRepository.AddAsync(match);
     }
 
     public async Task UpdateResult(int number, int guestTeamGoals, int awayTeamsGoals)
     {
-        Match? match = await _matchRepository.GetByNumber(number);
+        Match match = await _matchRepository.GetByNumber(number);
         match.GuestTeamGoals = guestTeamGoals;
         match.AwayTeamGoals = awayTeamsGoals;
         await _matchRepository.UpdateAsync(match);
     }
 
-    public async Task<IEnumerable<Match>> GetAll()
+    public async Task<IEnumerable<MatchResponse>> GetAll()
     {
-        return await _matchRepository.GetAll();
+        var matches =  await _matchRepository.GetAll();
+
+        return matches.ToMatchesResponse();
     }
 
-    public async Task<Match?> GetByNumber(int number)
+    public async Task<MatchResponse> GetByNumber(int number)
     {
-        return await _matchRepository.GetByNumber(number);
+        return (await _matchRepository.GetByNumber(number)).ToMatchResponse();
     }
 }

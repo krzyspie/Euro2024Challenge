@@ -1,4 +1,6 @@
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
@@ -20,8 +22,9 @@ public class FootballerService : IFootballerService
         await _footballerRepository.UpdateAsync(footballer);
     }
 
-    public async Task<Footballer> Get(int id)
+    public async Task<FootballerResponse> Get(int id)
     {
-        return await _footballerRepository.Get(id);
+        var footballer =  await _footballerRepository.Get(id);
+        return footballer.ToFootballerResponse();
     }
 }

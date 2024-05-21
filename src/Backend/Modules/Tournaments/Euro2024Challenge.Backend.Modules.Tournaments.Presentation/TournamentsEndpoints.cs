@@ -1,6 +1,4 @@
 ﻿using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
-using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
-using Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
@@ -17,17 +15,25 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
 
             tournaments.MapPost("match", AddMatch)
                 .Produces(201);
-            
             tournaments.MapPut("match", UpdateMatchResult)
                 .Produces(200);
+            tournaments.MapGet("match/{number:int}", GetMatch)
+                .Produces(200);
+            tournaments.MapGet("match", GetAllMatches)
+                .Produces(200);
             
-            tournaments.MapGet("match", GetMatch)
+            tournaments.MapGet("team", GetTeams)
+                .Produces(201);
+            
+            tournaments.MapPut("footballer", UpdateFootballerGoals)
+                .Produces(200);
+            tournaments.MapGet("footballer/{id:int}", GetFootballer)
                 .Produces(200);
         }
         
         private static async Task<IResult> AddMatch([FromServices] IMatchService matchService, AddMatchRequest request)
         {
-            await matchService.Add(new Match());
+            await matchService.Add(request);
 
             return Results.Ok();
         }
@@ -41,16 +47,16 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
         
         private static async Task<IResult> GetAllMatches([FromServices] IMatchService matchService)
         {
-            await matchService.GetAll();
+            var matches = await matchService.GetAll();
 
-            return Results.Ok();
+            return Results.Ok(matches);
         }
         
         private static async Task<IResult> GetMatch([FromServices] IMatchService matchService, int number)
         {
-            Match? match = await matchService.GetByNumber(number);
+            var match = await matchService.GetByNumber(number);
 
-            return Results.Ok(match.ToMatchResponse());
+            return Results.Ok(match);
         }
         
         private static async Task<IResult> GetTeams([FromServices] ITeamService teamService, IEnumerable<int> ids)
@@ -62,9 +68,9 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
         
         private static async Task<IResult> GetFootballer([FromServices] IFootballerService footballerService, int id)
         {
-            await footballerService.Get(id);
+            var result = await footballerService.Get(id);
 
-            return Results.Ok();
+            return Results.Ok(result);
         }
         
         private static async Task<IResult> UpdateFootballerGoals([FromServices] IFootballerService footballerService, int id, UpdateFootballerGoalsRequest request)

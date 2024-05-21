@@ -7,5 +7,5 @@ public interface IMatchRepository
     Task AddAsync(Match? match);
     Task UpdateAsync(Match? match);
     Task<IEnumerable<Match>> GetAll();
-    Task<Match?> GetByNumber(int number);
+    Task<Match> GetByNumber(int number);
 }

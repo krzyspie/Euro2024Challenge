@@ -5,7 +5,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 
 public static class FootballerExtensions
 {
-    public static FootballerResponse ToTeamResponse(this Footballer footballer)
+    public static FootballerResponse ToFootballerResponse(this Footballer footballer)
     {
         return new FootballerResponse(footballer.Id, footballer.FullName, footballer.Goals, footballer.Team.Name);
     }
