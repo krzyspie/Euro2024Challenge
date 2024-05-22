@@ -27,7 +27,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
             
             tournaments.MapPut("footballer", UpdateFootballerGoals)
                 .Produces(200);
-            tournaments.MapGet("footballer/{id:int}", GetFootballer)
+            tournaments.MapGet("footballer", GetFootballer)
                 .Produces(200);
         }
         
@@ -66,14 +66,15 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
             return Results.Ok(teams);
         }
         
-        private static async Task<IResult> GetFootballer([FromServices] IFootballerService footballerService, int id)
+        private static async Task<IResult> GetFootballer([FromServices] IFootballerService footballerService, [FromQuery] int id)
         {
             var result = await footballerService.Get(id);
 
-            return Results.Ok(result);
+            return result is null ? Results.NotFound() : Results.Ok(result);
         }
         
-        private static async Task<IResult> UpdateFootballerGoals([FromServices] IFootballerService footballerService, int id, UpdateFootballerGoalsRequest request)
+        private static async Task<IResult> UpdateFootballerGoals([FromServices] IFootballerService footballerService,
+            [FromQuery] int id, [FromBody] UpdateFootballerGoalsRequest request)
         {
             await footballerService.UpdateGoals(id, request.Goals);
 

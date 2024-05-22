@@ -36,7 +36,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Database.Migrations
                         .HasMaxLength(32)
                         .HasColumnType("character varying(32)");
 
-                    b.Property<int>("Golas")
+                    b.Property<int>("Goals")
                         .HasColumnType("integer");
 
                     b.Property<int>("TeamId")
