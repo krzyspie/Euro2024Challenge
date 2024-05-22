@@ -22,8 +22,8 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
             tournaments.MapGet("match", GetAllMatches)
                 .Produces(200);
             
-            tournaments.MapGet("team", GetTeams)
-                .Produces(201);
+            tournaments.MapGet("teams", GetTeams)
+                .Produces(200);
             
             tournaments.MapPut("footballer", UpdateFootballerGoals)
                 .Produces(200);
@@ -59,7 +59,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
             return Results.Ok(match);
         }
         
-        private static async Task<IResult> GetTeams([FromServices] ITeamService teamService, IEnumerable<int> ids)
+        private static async Task<IResult> GetTeams([FromServices] ITeamService teamService, [FromQuery]int[] ids)
         {
             var teams = await teamService.GetTeamsAsync(ids.ToList());
 
