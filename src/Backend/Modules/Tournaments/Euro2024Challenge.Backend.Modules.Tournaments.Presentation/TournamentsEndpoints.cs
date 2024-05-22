@@ -17,9 +17,9 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
                 .Produces(201);
             tournaments.MapPut("match", UpdateMatchResult)
                 .Produces(200);
-            tournaments.MapGet("match/{number:int}", GetMatch)
+            tournaments.MapGet("match", GetMatch)
                 .Produces(200);
-            tournaments.MapGet("match", GetAllMatches)
+            tournaments.MapGet("matches", GetAllMatches)
                 .Produces(200);
             
             tournaments.MapGet("teams", GetTeams)
