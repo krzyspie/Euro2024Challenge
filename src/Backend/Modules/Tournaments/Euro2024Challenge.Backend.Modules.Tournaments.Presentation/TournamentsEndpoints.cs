@@ -14,20 +14,20 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
             var tournaments = app.MapGroup("tournaments-module/");
 
             tournaments.MapPost("match", AddMatch)
-                .Produces(201);
+                .Produces(200);
             tournaments.MapPut("match", UpdateMatchResult)
                 .Produces(200);
-            tournaments.MapGet("match", GetMatch)
+            tournaments.MapGet("match/{number:int}", GetMatch)
                 .Produces(200);
             tournaments.MapGet("matches", GetAllMatches)
                 .Produces(200);
             
-            tournaments.MapGet("teams", GetTeams)
+            tournaments.MapGet("teams/{ids}", GetTeams)
                 .Produces(200);
             
-            tournaments.MapPut("footballer", UpdateFootballerGoals)
+            tournaments.MapPut("footballer/{id:int}", UpdateFootballerGoals)
                 .Produces(200);
-            tournaments.MapGet("footballer", GetFootballer)
+            tournaments.MapGet("footballer/{id:int}", GetFootballer)
                 .Produces(200);
         }
         
@@ -59,14 +59,14 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
             return Results.Ok(match);
         }
         
-        private static async Task<IResult> GetTeams([FromServices] ITeamService teamService, [FromQuery]int[] ids)
+        private static async Task<IResult> GetTeams([FromServices] ITeamService teamService, int[] ids)
         {
             var teams = await teamService.GetTeamsAsync(ids.ToList());
 
             return Results.Ok(teams);
         }
         
-        private static async Task<IResult> GetFootballer([FromServices] IFootballerService footballerService, [FromQuery] int id)
+        private static async Task<IResult> GetFootballer([FromServices] IFootballerService footballerService, int id)
         {
             var result = await footballerService.Get(id);
 
@@ -74,7 +74,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
         }
         
         private static async Task<IResult> UpdateFootballerGoals([FromServices] IFootballerService footballerService,
-            [FromQuery] int id, [FromBody] UpdateFootballerGoalsRequest request)
+             int id, [FromBody] UpdateFootballerGoalsRequest request)
         {
             await footballerService.UpdateGoals(id, request.Goals);
 
