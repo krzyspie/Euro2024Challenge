@@ -15,7 +15,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
 
             tournaments.MapPost("match", AddMatch)
                 .Produces(200);
-            tournaments.MapPut("match", UpdateMatchResult)
+            tournaments.MapPut("match/{number:int}", UpdateMatchResult)
                 .Produces(200);
             tournaments.MapGet("match/{number:int}", GetMatch)
                 .Produces(200);
@@ -38,9 +38,9 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Presentation
             return Results.Ok();
         }
         
-        private static async Task<IResult> UpdateMatchResult([FromServices] IMatchService matchService, UpdateMatchResultRequest request)
+        private static async Task<IResult> UpdateMatchResult([FromServices] IMatchService matchService, int number, UpdateMatchResultRequest request)
         {
-            await matchService.UpdateResult(request.Number, request.GuestTeamGoals, request.AwayTeamGoals);
+            await matchService.UpdateResult(number, request.GuestTeamGoals, request.AwayTeamGoals);
 
             return Results.Ok();
         }
