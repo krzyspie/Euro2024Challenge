@@ -52,7 +52,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
 
         private static async Task<IResult> GetPlayerBets([FromServices] ISender sender, Guid playerId)
         {
-            await sender.Send(new GetPlayerBetsCommand(playerId));
+            await sender.Send(new GetPlayerBetsQuery(playerId));
 
             return Results.Ok();
         }

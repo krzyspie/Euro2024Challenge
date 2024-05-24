@@ -4,11 +4,11 @@ using MediatR;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Application.Bets.Get
 {
-    internal sealed class GetPlayerBetsCommandHandler(IPlayersRepository playersRepository) : IRequestHandler<GetPlayerBetsCommand, PlayerBetsDto>
+    internal sealed class GetPlayerBetsQueryHandler(IPlayersRepository playersRepository) : IRequestHandler<GetPlayerBetsQuery, PlayerBetsDto>
     {
         private readonly IPlayersRepository _playersRepository = playersRepository;
 
-        public async Task<PlayerBetsDto> Handle(GetPlayerBetsCommand request, CancellationToken cancellationToken)
+        public async Task<PlayerBetsDto> Handle(GetPlayerBetsQuery request, CancellationToken cancellationToken)
         {
             return await Task.FromResult(new PlayerBetsDto());
         }
