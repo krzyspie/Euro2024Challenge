@@ -1,8 +1,8 @@
-﻿using Euro2024Challenge.Backend.Modules.Players.Application.Players.DTO;
+﻿using Euro2024Challenge.Backend.Modules.Players.Application.Bets.DTO;
 using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 using MediatR;
 
-namespace Euro2024Challenge.Backend.Modules.Players.Application.Players.Get
+namespace Euro2024Challenge.Backend.Modules.Players.Application.Bets.Get
 {
     internal sealed class GetPlayerBetsCommandHandler(IPlayersRepository playersRepository) : IRequestHandler<GetPlayerBetsCommand, PlayerBetsDto>
     {

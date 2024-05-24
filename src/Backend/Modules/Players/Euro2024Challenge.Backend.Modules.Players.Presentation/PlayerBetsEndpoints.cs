@@ -1,5 +1,5 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Application.Bets.Create;
-using Euro2024Challenge.Backend.Modules.Players.Application.Players.Get;
+using Euro2024Challenge.Backend.Modules.Players.Application.Bets.Get;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
