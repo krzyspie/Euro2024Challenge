@@ -25,5 +25,14 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repo
         {
             return _players.SingleAsync(p => p.Id == playerId);
         }
+        
+        public Task<Player> GetWithBets(Guid playerId)
+        {
+            return _players
+                .Include(m => m.MatchBets)
+                .Include(w => w.TournamentWinnerBet)
+                .Include(s => s.TopScorerBet)
+                .SingleAsync(p => p.Id == playerId);
+        }
     }
 }

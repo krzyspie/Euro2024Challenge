@@ -7,5 +7,6 @@ namespace Euro2024Challenge.Backend.Modules.Players.Domain.Repositories
         Task Create(Player player);
 
         Task<Player> Get(Guid playerId);
+        Task<Player> GetWithBets(Guid playerId);
     }
 }
