@@ -20,5 +20,10 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repo
             await _players.AddAsync(player);
             await _context.SaveChangesAsync();
         }
+
+        public Task<Player> Get(Guid playerId)
+        {
+            return _players.SingleAsync(p => p.Id == playerId);
+        }
     }
 }
