@@ -22,6 +22,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Api
         public static IEndpointRouteBuilder UsePlayersModules(this IEndpointRouteBuilder app)
         {
             app.MapPlayersEndpoints();
+            app.MapPlayerBetsEndpoints();
 
             return app;
         }
