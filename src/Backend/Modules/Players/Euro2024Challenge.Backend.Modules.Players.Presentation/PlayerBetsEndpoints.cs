@@ -31,7 +31,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Presentation
 
         private static async Task<IResult> CreateMatchBet([FromServices] ISender sender, CreateMatchBetRequest request)
         {
-            await sender.Send(new CreateMatchBetCommand(request.PlayerId, request.MatchId, request.Result, request.HomeTeamGoals, request.AwayTeamGoals));
+            await sender.Send(new CreateMatchBetCommand(request.PlayerId, request.MatchId, request.Winner, request.HomeTeamGoals, request.AwayTeamGoals));
 
             return Results.Ok();
         }
