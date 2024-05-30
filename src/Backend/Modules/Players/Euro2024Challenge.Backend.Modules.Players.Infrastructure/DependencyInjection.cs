@@ -12,7 +12,8 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure
         {
             services
                 .AddPostgres<PlayersDbContext>()
-                .AddScoped<IPlayersRepository, PlayersRepository>();
+                .AddScoped<IPlayersRepository, PlayersRepository>()
+                .AddScoped<IPlayersBetsRepository, PlayersBetsRepository>();
 
             return services;
         }

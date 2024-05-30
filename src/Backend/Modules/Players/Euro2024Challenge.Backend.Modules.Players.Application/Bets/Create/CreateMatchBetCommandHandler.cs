@@ -22,7 +22,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Application.Bets.Create
                 MatchId = request.MatchId,
                 Result = MatchResult.CreateNew((ushort)request.HomeTeamGoals, (ushort)request.AwayTeamGoals),
                 PlayerId = request.PLayerId,
-                CreatedAt = DateTime.Now,
+                CreatedAt = DateTime.UtcNow,
                 Winner = request.Winner
             };
             
