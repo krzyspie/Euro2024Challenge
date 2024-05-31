@@ -18,11 +18,9 @@ namespace Euro2024Challenge.Backend.Modules.Players.Application.Bets.Create
         {
             var bet = new MatchBet
             {
-                Id = new Guid(),
                 MatchId = request.MatchId,
                 Result = MatchResult.CreateNew((ushort)request.HomeTeamGoals, (ushort)request.AwayTeamGoals),
                 PlayerId = request.PLayerId,
-                CreatedAt = DateTime.UtcNow,
                 Winner = request.Winner
             };
             
