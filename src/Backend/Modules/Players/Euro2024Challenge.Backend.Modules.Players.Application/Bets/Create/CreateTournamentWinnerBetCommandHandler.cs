@@ -1,4 +1,5 @@
-﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
+﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
+using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 using MediatR;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Application.Bets.Create
@@ -12,9 +13,17 @@ namespace Euro2024Challenge.Backend.Modules.Players.Application.Bets.Create
             _playersBetsRepository = playersBetsRepository;
         }
 
-        public Task<Unit> Handle(CreateTournamentWinnerBetCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(CreateTournamentWinnerBetCommand request, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            var bet = new TournamentWinnerBet()
+            {
+                TeamId = request.TeamId,
+                PlayerId = request.PLayerId
+            };
+
+            await _playersBetsRepository.CreateTournamentWinnerBetAsync(bet);
+            
+            return Unit.Value;
         }
     }
 }
