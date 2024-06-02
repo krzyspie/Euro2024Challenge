@@ -25,9 +25,10 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repo
             await _context.SaveChangesAsync();
         }
 
-        public Task UpdateMatchBetAsync(MatchBet matchBet)
+        public async Task UpdateMatchBetAsync(MatchBet matchBet)
         {
-            throw new NotImplementedException();
+            _matchBets.Update(matchBet);
+            await _context.SaveChangesAsync();
         }
 
         public async Task CreateTopScorerBetAsync(TopScorerBet topScorerBet)
@@ -36,9 +37,10 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repo
             await _context.SaveChangesAsync();
         }
 
-        public Task UpdateTopScorerBetAsync(TopScorerBet topScorerBet)
+        public async Task UpdateTopScorerBetAsync(TopScorerBet topScorerBet)
         {
-            throw new NotImplementedException();
+            _topScorerBets.Update(topScorerBet);
+            await _context.SaveChangesAsync();
         }
 
         public async Task CreateTournamentWinnerBetAsync(TournamentWinnerBet tournamentWinnerBet)
@@ -47,9 +49,10 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repo
             await _context.SaveChangesAsync();
         }
 
-        public Task UpdateTournamentWinnerBetAsync(TournamentWinnerBet tournamentWinnerBet)
+        public async Task UpdateTournamentWinnerBetAsync(TournamentWinnerBet tournamentWinnerBet)
         {
-            throw new NotImplementedException();
+            _tournamentWinnerBets.Update(tournamentWinnerBet);
+            await _context.SaveChangesAsync();
         }
     }
 }
