@@ -1,4 +1,5 @@
 ﻿using Euro2024Challenge.Backend.Modules.Players.Application.Bets.DTO;
+using Euro2024Challenge.Backend.Modules.Players.Application.Extensions;
 using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 using MediatR;
 
@@ -10,7 +11,9 @@ namespace Euro2024Challenge.Backend.Modules.Players.Application.Bets.Get
 
         public async Task<PlayerBetsDto> Handle(GetPlayerBetsQuery request, CancellationToken cancellationToken)
         {
-            return await Task.FromResult(new PlayerBetsDto());
+            var result = await _playersRepository.GetWithBets(request.PlayerId);
+            
+            return result.ToPlayerBetsDto();
         }
     }
 }
