@@ -12,10 +12,8 @@ namespace Euro2024Challenge.Backend.Modules.Players.Application.Players.Create
         {
             Player player = new()
             {
-                Id = Guid.NewGuid(),
                 Email = request.Email,
                 Username = request.Username,
-                CreatedAt = DateTime.Now
             };
 
             await _playersRepository.Create(player);
