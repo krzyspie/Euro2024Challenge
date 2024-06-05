@@ -6,8 +6,8 @@
         
         public IEnumerable<PlayerMatchBetDto> MatchBets { get; set; }
 
-        public PlayerTopScorerBetDto TopScorerBet { get; set; }
+        public PlayerTopScorerBetDto? TopScorerBet { get; set; }
 
-        public PlayerTournamentWinnerBetDto TournamentWinner { get; set; }
+        public PlayerTournamentWinnerBetDto? TournamentWinner { get; set; }
     }
 }

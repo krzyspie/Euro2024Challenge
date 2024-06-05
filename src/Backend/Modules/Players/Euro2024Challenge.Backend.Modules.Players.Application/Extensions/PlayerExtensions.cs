@@ -22,14 +22,14 @@ public static class PlayerExtensions
         {
             PlayerId = player.Id,
             TopScorerBet = player.TopScorerBet is null 
-                ? new PlayerTopScorerBetDto() 
+                ? null
                 : new PlayerTopScorerBetDto
                 {
                     //FootballerId = player.TopScorerBet.FootballerId,
                     Goals = player.TopScorerBet.Goals
                 },
             TournamentWinner = player.TournamentWinnerBet is null
-            ? new PlayerTournamentWinnerBetDto()
+            ? null
             : new PlayerTournamentWinnerBetDto
             {
                 TeamId = player.TournamentWinnerBet.TeamId
