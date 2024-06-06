@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Tournaments\Euro2024Challenge.Backend.Modules.Tournament.Shared\Euro2024Challenge.Backend.Modules.Tournament.Shared.csproj" />
     <ProjectReference Include="..\Euro2024Challenge.Backend.Modules.Players.Domain\Euro2024Challenge.Backend.Modules.Players.Domain.csproj" />
   </ItemGroup>
 
