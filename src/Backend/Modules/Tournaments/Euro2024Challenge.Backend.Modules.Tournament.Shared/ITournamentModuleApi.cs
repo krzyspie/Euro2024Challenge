@@ -2,4 +2,7 @@
 
 public interface ITournamentModuleApi
 {
+    Task GetMatches(int[] matchIds);
+    Task GetTeam(int id);
+    Task GetFootballer(int id);
 }
