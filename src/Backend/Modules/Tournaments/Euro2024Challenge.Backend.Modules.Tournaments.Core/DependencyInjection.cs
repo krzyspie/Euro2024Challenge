@@ -1,3 +1,4 @@
+using Euro2024Challenge.Backend.Modules.Tournament.Shared;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Database;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
@@ -17,7 +18,8 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core
                 .AddScoped<IMatchRepository, MatchRepository>()
                 .AddScoped<IMatchService, MatchService>()
                 .AddScoped<IFootballerRepository, FootballerRepository>()
-                .AddScoped<IFootballerService, FootballerService>();
+                .AddScoped<IFootballerService, FootballerService>()
+                .AddTransient<ITournamentModuleApi, TournamentModuleApi>();
             
             return services;
         }
