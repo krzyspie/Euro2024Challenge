@@ -38,15 +38,20 @@ public class MatchService : IMatchService
         await _matchRepository.UpdateAsync(match);
     }
 
-    public async Task<IEnumerable<MatchResponse>> GetAll()
+    public async Task<IReadOnlyCollection<MatchResponse>> GetAll()
     {
         var matches =  await _matchRepository.GetAll();
 
-        return matches.ToMatchesResponse();
+        return matches.ToMatchesResponse().ToList().AsReadOnly();
     }
 
     public async Task<MatchResponse> GetByNumber(int number)
     {
         return (await _matchRepository.GetByNumber(number)).ToMatchResponse();
+    }
+
+    public async Task<IReadOnlyCollection<MatchResponse>> GetByNumbers(int[] numbers)
+    {
+        return (await _matchRepository.GetByNumbers(numbers)).ToMatchesResponse().ToList().AsReadOnly();
     }
 }

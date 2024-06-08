@@ -36,4 +36,9 @@ public class MatchRepository : IMatchRepository
     {
         return await _matches.SingleAsync(x => x.Number == number);
     }
+
+    public async Task<IReadOnlyCollection<Match>> GetByNumbers(int[] numbers)
+    {
+        return (await _matches.Where(x => numbers.Contains(x.Number)).ToListAsync()).AsReadOnly();
+    }
 }

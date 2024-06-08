@@ -7,6 +7,7 @@ public interface IMatchService
 {
     Task Add(AddMatchRequest match);
     Task UpdateResult(int number, int guestTeamGoals, int awayTeamGoals);
-    Task<IEnumerable<MatchResponse>> GetAll();
+    Task<IReadOnlyCollection<MatchResponse>> GetAll();
     Task<MatchResponse> GetByNumber(int number);
+    Task<IReadOnlyCollection<MatchResponse>> GetByNumbers(int[] numbers);
 }

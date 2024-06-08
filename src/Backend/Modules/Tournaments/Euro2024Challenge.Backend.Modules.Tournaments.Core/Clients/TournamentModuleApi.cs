@@ -17,18 +17,21 @@ public class TournamentModuleApi : ITournamentModuleApi
         _footballerService = footballerService;
     }
 
-    public Task<TeamResponse> GetTeam(int id)
+    public async Task<TeamResponse> GetTeam(int id)
     {
-        throw new NotImplementedException();
+        var result = await _teamService.GetTeamAsync(id);
+        return result;
     }
 
-    Task<FootballerResponse> ITournamentModuleApi.GetFootballer(int id)
+    public async Task<FootballerResponse> GetFootballer(int id)
     {
-        throw new NotImplementedException();
+        var result = await _footballerService.Get(id);
+        return result;
     }
 
-    Task<IReadOnlyCollection<MatchResponse>> ITournamentModuleApi.GetMatches(int[] matchIds)
+    public async Task<IReadOnlyCollection<MatchResponse>> GetMatches(int[] matchIds)
     {
-        throw new NotImplementedException();
+        var result = await _matchService.GetByNumbers(matchIds);
+        return result;
     }
 }

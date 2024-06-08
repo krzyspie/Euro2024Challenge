@@ -8,4 +8,5 @@ public interface IMatchRepository
     Task UpdateAsync(Match? match);
     Task<IEnumerable<Match>> GetAll();
     Task<Match> GetByNumber(int number);
+    Task<IReadOnlyCollection<Match>> GetByNumbers(int[] numbers);
 }
