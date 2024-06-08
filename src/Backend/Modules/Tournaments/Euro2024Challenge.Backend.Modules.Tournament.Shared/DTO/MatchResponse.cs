@@ -1,6 +1,6 @@
-namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
+namespace Euro2024Challenge.Backend.Modules.Tournament.Shared.DTO;
 
-public record MatchResponse(
+public sealed record MatchResponse(
     int Id,
     int Number,
     int GuestTeamId,

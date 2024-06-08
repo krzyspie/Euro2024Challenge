@@ -1,4 +1,4 @@
-using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
+using Euro2024Challenge.Backend.Modules.Tournament.Shared.DTO;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 
@@ -18,5 +18,12 @@ public class TeamService : ITeamService
         var teams = await _teamRepository.GetTeamsAsync(ids);
 
         return teams.ToTeamResponse();
+    }
+
+    public async Task<TeamResponse> GetTeamAsync(int ids)
+    {
+        var team = await _teamRepository.GetTeamAsync(ids);
+
+        return team.ToTeamResponse();
     }
 }
