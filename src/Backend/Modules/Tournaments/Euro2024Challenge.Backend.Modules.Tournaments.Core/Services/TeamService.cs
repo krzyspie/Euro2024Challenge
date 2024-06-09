@@ -17,7 +17,7 @@ public class TeamService : ITeamService
     {
         var teams = await _teamRepository.GetTeamsAsync(ids);
 
-        return teams.ToTeamResponse();
+        return teams.ToTeamsResponse();
     }
 
     public async Task<TeamResponse> GetTeamAsync(int ids)

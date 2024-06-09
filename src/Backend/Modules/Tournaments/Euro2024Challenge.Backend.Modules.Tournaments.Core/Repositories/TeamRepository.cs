@@ -18,8 +18,14 @@ public class TeamRepository : ITeamRepository
         return await _teams.SingleAsync(x => x.Id == id);
     }
 
-    public async Task<IEnumerable<Team>> GetTeamsAsync(List<int> ids)
+    public async Task<IDictionary<int, string>> GetTeamsAsync(IEnumerable<int> ids)
     {
-        return await _teams.Where(x => ids.Contains(x.Id)).ToListAsync();
+        return await _teams.Where(x => ids.Contains(x.Id))
+                        .ToDictionaryAsync<Team, int, string>(key => key.Id, v => v.Name);
+    }
+
+    public async Task<IDictionary<int, string>> GetAllTeamsAsync()
+    {
+        return await _teams.ToDictionaryAsync<Team, int, string>(key => key.Id, v => v.Name);
     }
 }

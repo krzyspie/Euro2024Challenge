@@ -9,12 +9,14 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 public class MatchService : IMatchService
 {
     private readonly IMatchRepository _matchRepository;
+    private readonly ITeamRepository _teamRepository;
 
-    public MatchService(IMatchRepository matchRepository)
+    public MatchService(IMatchRepository matchRepository, ITeamRepository teamRepository)
     {
         _matchRepository = matchRepository;
+        _teamRepository = teamRepository;
     }
-    
+
     public async Task Add(AddMatchRequest matchToAdd)
     {
         var match = new Match
@@ -41,17 +43,22 @@ public class MatchService : IMatchService
     public async Task<IReadOnlyCollection<MatchResponse>> GetAll()
     {
         var matches =  await _matchRepository.GetAll();
+        var teams = await _teamRepository.GetAllTeamsAsync();
 
-        return matches.ToMatchesResponse().ToList().AsReadOnly();
+        return matches.ToMatchesResponse(teams).ToList().AsReadOnly();
     }
 
     public async Task<MatchResponse> GetByNumber(int number)
     {
-        return (await _matchRepository.GetByNumber(number)).ToMatchResponse();
+        var teams = await _teamRepository.GetAllTeamsAsync();
+        return (await _matchRepository.GetByNumber(number)).ToMatchResponse(teams);
     }
 
     public async Task<IReadOnlyCollection<MatchResponse>> GetByNumbers(int[] numbers)
     {
-        return (await _matchRepository.GetByNumbers(numbers)).ToMatchesResponse().ToList().AsReadOnly();
+        var matches = await _matchRepository.GetByNumbers(numbers);
+        var teams = await _teamRepository.GetAllTeamsAsync();
+
+        return matches.ToMatchesResponse(teams).ToList().AsReadOnly();
     }
 }

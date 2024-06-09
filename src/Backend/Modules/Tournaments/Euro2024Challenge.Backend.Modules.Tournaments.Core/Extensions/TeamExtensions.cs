@@ -5,9 +5,9 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 
 public static class TeamExtensions
 {
-    public static IEnumerable<TeamResponse> ToTeamResponse(this IEnumerable<Team> teams)
+    public static IEnumerable<TeamResponse> ToTeamsResponse(this IDictionary<int, string> teams)
     {
-        return teams.Select(team => new TeamResponse(team.Id, team.Name));
+        return teams.Select(team => new TeamResponse(team.Key, team.Value));
     }
 
     public static TeamResponse ToTeamResponse(this Team team)
