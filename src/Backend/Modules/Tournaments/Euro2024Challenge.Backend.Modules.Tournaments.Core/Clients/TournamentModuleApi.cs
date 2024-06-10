@@ -31,6 +31,11 @@ public class TournamentModuleApi : ITournamentModuleApi
 
     public async Task<IReadOnlyCollection<MatchResponse>> GetMatches(int[] matchIds)
     {
+        if(!matchIds.Any())
+        {
+            return (IReadOnlyCollection<MatchResponse>)Enumerable.Empty<MatchResponse>();
+        }
+
         var result = await _matchService.GetByNumbers(matchIds);
         return result;
     }

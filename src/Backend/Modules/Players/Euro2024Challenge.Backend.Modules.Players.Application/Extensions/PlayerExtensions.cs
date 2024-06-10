@@ -17,7 +17,7 @@ public static class PlayerExtensions
         };
     }
     
-    public static PlayerBetsDto ToPlayerBetsDto(this Player player, TeamResponse tournamentWinnerTeam)
+    public static PlayerBetsDto ToPlayerBetsDto(this Player player, TeamResponse? tournamentWinnerTeam, FootballerResponse? footballer)
     {
         return new PlayerBetsDto
         {
@@ -27,7 +27,9 @@ public static class PlayerExtensions
                 : new PlayerTopScorerBetDto
                 {
                     //FootballerId = player.TopScorerBet.FootballerId,
-                    Goals = player.TopScorerBet.Goals
+                    Goals = player.TopScorerBet.Goals,
+                    FullName = footballer.FullName,
+                    TeamName = footballer.TeamName
                 },
             TournamentWinner = player.TournamentWinnerBet is null
             ? null
