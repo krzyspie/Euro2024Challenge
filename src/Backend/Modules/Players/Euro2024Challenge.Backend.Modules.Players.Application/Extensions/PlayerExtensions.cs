@@ -17,7 +17,7 @@ public static class PlayerExtensions
         };
     }
     
-    public static PlayerBetsDto ToPlayerBetsDto(this Player player, TeamResponse? tournamentWinnerTeam, FootballerResponse? footballer)
+    public static PlayerBetsDto ToPlayerBetsDto(this Player player, TeamResponse? tournamentWinnerTeam, FootballerResponse? footballer, IReadOnlyCollection<MatchResponse> matches)
     {
         return new PlayerBetsDto
         {
@@ -40,7 +40,7 @@ public static class PlayerExtensions
             },
             MatchBets = player.MatchBets is null 
                 ? Enumerable.Empty<PlayerMatchBetDto>() 
-                : player.MatchBets.ToPlayerMatchBetDto()
+                : player.MatchBets.ToPlayerMatchBetDto(matches)
         };
     }
     

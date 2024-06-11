@@ -19,7 +19,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Application.Bets.Get
             var match = await _tournamentModuleApi.GetMatches(result.MatchBets.Select(m => m.MatchId).ToArray());
             var footballer = result.TopScorerBet is null ? null : await _tournamentModuleApi.GetFootballer(result.TopScorerBet.FootballerId);
 
-            return result.ToPlayerBetsDto(team, footballer);
+            return result.ToPlayerBetsDto(team, footballer, match);
         }
     }
 }

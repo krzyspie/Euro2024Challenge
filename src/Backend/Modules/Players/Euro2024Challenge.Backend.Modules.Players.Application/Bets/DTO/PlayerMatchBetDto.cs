@@ -4,8 +4,10 @@
     {
         public Guid PlayerId { get; set; }
         public int MatchId { get; set; }
-        public int Result { get; set; }
+        public string Result { get; set; }
         public int HomeTeamGoals { get; set; }
+        public string HomeTeam { get; set; }
         public int AwayTeamGoals { get; set; }
+        public string AwayTeam { get; set; }
     }
 }
