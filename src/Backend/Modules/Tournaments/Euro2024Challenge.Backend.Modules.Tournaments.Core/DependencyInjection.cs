@@ -13,6 +13,7 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core
         {
             services
                 .AddPostgres<TournamentDbContext>()
+                .AddMemoryCache()
                 .AddScoped<ITeamRepository, TeamRepository>()
                 .AddScoped<ITeamService, TeamService>()
                 .AddScoped<IMatchRepository, MatchRepository>()
