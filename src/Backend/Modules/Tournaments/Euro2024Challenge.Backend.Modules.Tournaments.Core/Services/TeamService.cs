@@ -19,15 +19,29 @@ public class TeamService : ITeamService
     
     public async Task<IEnumerable<TeamResponse>> GetTeamsAsync(List<int> ids)
     {
+        SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+
         if(!_cache.TryGetValue(TeamsKey, out Dictionary<int, string>? allTeams))
         {
-            var teams = await _teamRepository.GetAllTeamsAsync();
-            
-            _cache.Set(TeamsKey, teams);
-            
-            var teamsDto = teams.ToTeamsResponse();
+            try
+            {
+                await semaphore.WaitAsync();
 
-            return teamsDto.Where(x => ids.Contains(x.Id));
+                if(!_cache.TryGetValue(TeamsKey, out allTeams))
+                {
+                    var teams = await _teamRepository.GetAllTeamsAsync();
+                
+                    _cache.Set(TeamsKey, teams);
+                
+                    var teamsDto = teams.ToTeamsResponse();
+
+                    return teamsDto.Where(x => ids.Contains(x.Id));
+                }
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         }
 
         var resultTeams = allTeams!.ToTeamsResponse();
@@ -37,17 +51,30 @@ public class TeamService : ITeamService
 
     public async Task<TeamResponse> GetTeamAsync(int id)
     {
+        SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+
         if(!_cache.TryGetValue(TeamsKey, out Dictionary<int, string>? allTeams))
         {
-            var teams = await _teamRepository.GetAllTeamsAsync();
-            
-            _cache.Set(TeamsKey, teams);
-            
-            var teamsDto = teams.ToTeamsResponse();
+            try
+            {
+                await semaphore.WaitAsync();
+                if(!_cache.TryGetValue(TeamsKey, out allTeams))
+                {
+                    var teams = await _teamRepository.GetAllTeamsAsync();
+                
+                    _cache.Set(TeamsKey, teams);
+                
+                    var teamsDto = teams.ToTeamsResponse();
 
-            return teamsDto.First(x => x.Id == id);
+                    return teamsDto.First(x => x.Id == id);
+                }
+            }
+            finally
+            {
+                semaphore.Release();
+            }
         }
 
-        return new TeamResponse(id, allTeams[id]);        
+        return new TeamResponse(id, allTeams![id]);        
     }
 }
