@@ -1,13 +1,13 @@
 using Euro2024Challenge.Backend.Modules.Tournament.Shared.DTO;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
-using Microsoft.EntityFrameworkCore.Storage.Json;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 
 public class TeamService : ITeamService
 {
+    private const string TeamsKey = "teams-key";
     private readonly ITeamRepository _teamRepository;
     private readonly IMemoryCache _cache;
 
@@ -19,24 +19,35 @@ public class TeamService : ITeamService
     
     public async Task<IEnumerable<TeamResponse>> GetTeamsAsync(List<int> ids)
     {
-        var stats = _cache.GetCurrentStatistics();
+        if(!_cache.TryGetValue(TeamsKey, out Dictionary<int, string>? allTeams))
+        {
+            var teams = await _teamRepository.GetAllTeamsAsync();
+            
+            _cache.Set(TeamsKey, teams);
+            
+            var teamsDto = teams.ToTeamsResponse();
 
-        var teams = await _teamRepository.GetTeamsAsync(ids);
+            return teamsDto.Where(x => ids.Contains(x.Id));
+        }
 
-        return teams.ToTeamsResponse();
+        var resultTeams = allTeams!.ToTeamsResponse();
+
+        return resultTeams.Where(x => ids.Contains(x.Id));
     }
 
     public async Task<TeamResponse> GetTeamAsync(int id)
     {
-        if(!_cache.TryGetValue(id, out string? teamName))
+        if(!_cache.TryGetValue(TeamsKey, out Dictionary<int, string>? allTeams))
         {
-            var team = await _teamRepository.GetTeamAsync(id);
+            var teams = await _teamRepository.GetAllTeamsAsync();
             
-            _cache.Set(id, team.Name);
+            _cache.Set(TeamsKey, teams);
             
-            return team.ToTeamResponse();
+            var teamsDto = teams.ToTeamsResponse();
+
+            return teamsDto.First(x => x.Id == id);
         }
-        
-        return new TeamResponse(id, teamName!);        
+
+        return new TeamResponse(id, allTeams[id]);        
     }
 }
