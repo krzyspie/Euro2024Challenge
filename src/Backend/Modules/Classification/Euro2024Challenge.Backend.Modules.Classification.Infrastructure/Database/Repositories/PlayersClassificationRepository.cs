@@ -8,13 +8,13 @@ namespace Euro2024Challenge.Backend.Modules.Classification.Infrastructure.Databa
 
 public class PlayersClassificationRepository : IClassificationRepository
 {
-    private readonly IMongoCollection<PlayerPoints> _playersClassificationCollection;
+    private readonly IMongoCollection<BetPoints> _playersClassificationCollection;
 
     public PlayersClassificationRepository(IOptions<ClassificationDatabaseSettings> options)
     {
         var mongoClient = new MongoClient(options.Value.ConnectionString);
         var mongoDatabase = mongoClient.GetDatabase(options.Value.DatabaseName);
-        _playersClassificationCollection = mongoDatabase.GetCollection<PlayerPoints>(options.Value.CollectionName);
+        _playersClassificationCollection = mongoDatabase.GetCollection<BetPoints>(options.Value.CollectionName);
     }
     public async Task<List<PlayersPoints>> GetAll()
     {
@@ -23,14 +23,14 @@ public class PlayersClassificationRepository : IClassificationRepository
         return null;
     }
 
-    public async Task Insert(PlayerPoints points)
+    public async Task Insert(BetPoints points)
     {
         await _playersClassificationCollection.InsertOneAsync(points);
     }
 
-    public async Task<PlayerPoints> Get(Guid playerId)
+    public async Task<BetPoints> Get(Guid playerId)
     {
-        var filter = Builders<PlayerPoints>.Filter.Eq("player_id", playerId);
+        var filter = Builders<BetPoints>.Filter.Eq("player_id", playerId);
         var result = await _playersClassificationCollection.Find(filter).FirstOrDefaultAsync();
         
         return null;
