@@ -1,17 +1,21 @@
-﻿using MediatR;
+﻿using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
+using MediatR;
 
 namespace Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetPlayerClassifications;
 
 public class GetPlayerClassificationsQueryHandler : IRequestHandler<GetPlayerClassificationsQuery, GetPlayerClassificationsResponse>
 {
-    public GetPlayerClassificationsQueryHandler()
+    private readonly IClassificationRepository _classificationRepository;
+
+    public GetPlayerClassificationsQueryHandler(IClassificationRepository classificationRepository)
     {
+        _classificationRepository = classificationRepository;
     }
 
-    public Task<GetPlayerClassificationsResponse> Handle(GetPlayerClassificationsQuery request, CancellationToken cancellationToken)
+    public async Task<GetPlayerClassificationsResponse> Handle(GetPlayerClassificationsQuery request, CancellationToken cancellationToken)
     {
+        Domain.Entities.BetPoints betsPoints = await _classificationRepository.Get(request.PlayerId);
+
         throw new NotImplementedException();
     }
 }
-
-
