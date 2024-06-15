@@ -2,7 +2,7 @@
 
 namespace Euro2024Challenge.Backend.Modules.Classification.Application;
 
-public class GetPlayerClassificationResponse
+public class GetPlayerClassificationsResponse
 {
     public Guid PlayerId { get; set; }
 
