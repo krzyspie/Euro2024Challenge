@@ -7,5 +7,5 @@ public interface IClassificationRepository
     Task<List<PlayersPoints>> GetAll();
 
     Task Insert(BetPoints points);
-    Task<BetPoints> Get(Guid playerId);
+    Task<IReadOnlyCollection<BetPoints>> Get(Guid playerId);
 }

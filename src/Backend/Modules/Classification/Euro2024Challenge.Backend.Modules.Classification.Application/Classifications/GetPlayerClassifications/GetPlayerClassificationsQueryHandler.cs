@@ -14,8 +14,8 @@ public class GetPlayerClassificationsQueryHandler : IRequestHandler<GetPlayerCla
 
     public async Task<GetPlayerClassificationsResponse> Handle(GetPlayerClassificationsQuery request, CancellationToken cancellationToken)
     {
-        Domain.Entities.BetPoints betsPoints = await _classificationRepository.Get(request.PlayerId);
+        IReadOnlyCollection<Domain.Entities.BetPoints> betsPoints = await _classificationRepository.Get(request.PlayerId);
 
-        throw new NotImplementedException();
+        return betsPoints.ToGetPlayerClassificationsResponse(request.PlayerId);
     }
 }
