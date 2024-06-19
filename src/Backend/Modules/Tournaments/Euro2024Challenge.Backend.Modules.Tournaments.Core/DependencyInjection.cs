@@ -4,6 +4,7 @@ using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 using Euro2024Challenge.Shared.Database;
 using Microsoft.Extensions.DependencyInjection;
+using Quartz;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Core
 {
@@ -21,6 +22,12 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core
                 .AddScoped<IFootballerRepository, FootballerRepository>()
                 .AddScoped<IFootballerService, FootballerService>()
                 .AddTransient<ITournamentModuleApi, TournamentModuleApi>();
+            
+            services.AddQuartz();
+            services.AddQuartzHostedService(options =>
+            {
+                options.WaitForJobsToComplete = true;
+            });
             
             return services;
         }
