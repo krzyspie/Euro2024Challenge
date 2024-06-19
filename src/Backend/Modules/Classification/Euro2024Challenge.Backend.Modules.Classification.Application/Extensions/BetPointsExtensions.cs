@@ -7,7 +7,10 @@ public static class BetPointsExtensions
         return new GetPlayerClassificationsResponse()
         {
             PlayerId = playerId,
-            BetsPoints = betPoints.Select(x => new BetPointsDto(){ BetId = x.BetId, Points = x.Points }).ToList().AsReadOnly()
+            BetsPoints = betPoints
+                        .Select(x => new BetPointsDto(){ BetId = x.BetId, Points = x.Points })
+                        .ToList()
+                        .AsReadOnly()
         };
     }
 
