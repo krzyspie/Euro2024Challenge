@@ -23,7 +23,13 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core
                 .AddScoped<IFootballerService, FootballerService>()
                 .AddTransient<ITournamentModuleApi, TournamentModuleApi>();
             
-            services.AddQuartz();
+            services.AddQuartz(configure => 
+            {
+                var jobKey = new JobKey(nameof(FetchTournamentDataJob));
+
+                configure.AddJob<FetchTournamentDataJob>(jobKey);
+
+            });
             services.AddQuartzHostedService(options =>
             {
                 options.WaitForJobsToComplete = true;
