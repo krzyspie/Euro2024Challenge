@@ -23,12 +23,18 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core
                 .AddScoped<IFootballerService, FootballerService>()
                 .AddTransient<ITournamentModuleApi, TournamentModuleApi>();
             
+
+
             services.AddQuartz(configure => 
             {
                 var jobKey = new JobKey(nameof(FetchTournamentDataJob));
 
-                configure.AddJob<FetchTournamentDataJob>(jobKey);
-
+                configure
+                    .AddJob<FetchTournamentDataJob>(jobKey)
+                    .AddTrigger(t => t
+                                    .ForJob(jobKey)
+                                    .StartNow()
+                                    .WithSchedule(CronScheduleBuilder.DailyAtHourAndMinute(23, 10)));
             });
             services.AddQuartzHostedService(options =>
             {
