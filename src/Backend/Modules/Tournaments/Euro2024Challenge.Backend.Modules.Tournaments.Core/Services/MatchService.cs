@@ -38,6 +38,8 @@ public class MatchService : IMatchService
         match.GuestTeamGoals = guestTeamGoals;
         match.AwayTeamGoals = awayTeamsGoals;
         await _matchRepository.UpdateAsync(match);
+
+        //Invoke event integration MatchResultUpdated
     }
 
     public async Task<IReadOnlyCollection<MatchResponse>> GetAll()
