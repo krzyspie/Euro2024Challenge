@@ -26,3 +26,4 @@ I want to develop both the backend and frontend to create a fully functional app
 - Postgres
 - EF Core
 - React
+- Use channels for integral events
