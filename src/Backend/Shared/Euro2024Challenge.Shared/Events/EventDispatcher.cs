@@ -14,10 +14,11 @@ public class EventDispatcher : IEventDispatcher
 
     public async Task PublishAsync<TEvent>(TEvent integrationEvent, CancellationToken cancellationToken) where TEvent : class, IEvent
     {
-        using var scope = _serviceProvider.CreateScope();
-            var handlers = scope.ServiceProvider.GetServices<IEventHandler<TEvent>>();
 
-            var tasks = handlers.Select(x => x.HandleAsync(integrationEvent));
-            await Task.WhenAll(tasks);
+        using var scope = _serviceProvider.CreateScope();
+        var handlers = scope.ServiceProvider.GetServices<IEventHandler<TEvent>>();
+
+        var tasks = handlers.Select(x => x.HandleAsync(integrationEvent));
+        await Task.WhenAll(tasks);
     }
 }
