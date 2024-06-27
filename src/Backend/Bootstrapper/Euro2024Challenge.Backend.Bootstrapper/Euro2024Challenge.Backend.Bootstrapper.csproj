@@ -20,6 +20,7 @@
     <ProjectReference Include="..\..\Modules\Classification\Euro2024Challenge.Backend.Modules.Classification.Api\Euro2024Challenge.Backend.Modules.Classification.Api.csproj" />
     <ProjectReference Include="..\..\Modules\Players\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api\Euro2024Challenge.Backend.Modules.Players.Api.csproj" />
     <ProjectReference Include="..\..\Modules\Tournaments\Euro2024Challenge.Backend.Modules.Tournaments.Api\Euro2024Challenge.Backend.Modules.Tournaments.Api.csproj" />
+    <ProjectReference Include="..\..\Shared\Euro2024Challenge.Shared\Euro2024Challenge.Shared.csproj" />
   </ItemGroup>
 
 </Project>
