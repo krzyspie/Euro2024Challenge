@@ -8,6 +8,10 @@ public static class DependencyInjection
     {
         services.AddSingleton<IEventDispatcher, EventDispatcher>();
         services.AddHostedService<IntegrationEventProcessorJob>();
+        services.Scan(s => s.FromAssemblies(AppDomain.CurrentDomain.GetAssemblies())
+            .AddClasses(c => c.AssignableTo(typeof(IEventHandler<>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
 
         return services;
 
