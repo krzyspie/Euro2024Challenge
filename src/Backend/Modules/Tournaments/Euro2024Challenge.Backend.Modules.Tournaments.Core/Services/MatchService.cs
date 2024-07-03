@@ -1,8 +1,10 @@
+using Euro2024Challenge.Backend.Modules.Tournament.Shared;
 using Euro2024Challenge.Backend.Modules.Tournament.Shared.DTO;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
+using Euro2024Challenge.Shared;
 
 namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 
@@ -10,11 +12,13 @@ public class MatchService : IMatchService
 {
     private readonly IMatchRepository _matchRepository;
     private readonly ITeamRepository _teamRepository;
+    private readonly IEventBus _eventBus;
 
-    public MatchService(IMatchRepository matchRepository, ITeamRepository teamRepository)
+    public MatchService(IMatchRepository matchRepository, ITeamRepository teamRepository, IEventBus eventBus)
     {
         _matchRepository = matchRepository;
         _teamRepository = teamRepository;
+        _eventBus = eventBus;
     }
 
     public async Task Add(AddMatchRequest matchToAdd)
@@ -39,7 +43,7 @@ public class MatchService : IMatchService
         match.AwayTeamGoals = awayTeamsGoals;
         await _matchRepository.UpdateAsync(match);
 
-        //Invoke event integration MatchResultUpdated
+        await _eventBus.PublishAsync(new MatchUpdated(number, guestTeamGoals, awayTeamsGoals));
     }
 
     public async Task<IReadOnlyCollection<MatchResponse>> GetAll()
