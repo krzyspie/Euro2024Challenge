@@ -16,6 +16,7 @@ public class PlayersClassificationRepository : IClassificationRepository
         var mongoDatabase = mongoClient.GetDatabase(options.Value.DatabaseName);
         _playersClassificationCollection = mongoDatabase.GetCollection<BetPoints>(options.Value.CollectionName);
     }
+
     public async Task<List<PlayersPoints>> GetAll()
     {
         var result = await _playersClassificationCollection.Find(_ => true).ToListAsync();
@@ -28,11 +29,11 @@ public class PlayersClassificationRepository : IClassificationRepository
         await _playersClassificationCollection.InsertOneAsync(points);
     }
 
-    public async Task<BetPoints> Get(Guid playerId)
+    public async Task<List<BetPoints>> Get(Guid playerId)
     {
         var filter = Builders<BetPoints>.Filter.Eq("player_id", playerId);
         var result = await _playersClassificationCollection.Find(filter).FirstOrDefaultAsync();
         
-        return null;
+        return [];
     }
 }
