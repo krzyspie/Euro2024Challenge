@@ -7,7 +7,7 @@ public class MatchUpdatedHandler : IEventHandler<MatchUpdated>
 {
     public Task HandleAsync(MatchUpdated integrationEvent, CancellationToken cancellationToken = default)
     {
-        Console.WriteLine("MatchUpdatedHandler");
+        Console.WriteLine("MatchUpdatedHandler integrationEvent");
 
         return Task.CompletedTask;
     }

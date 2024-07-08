@@ -18,7 +18,6 @@ internal sealed class IntegrationEventProcessorJob : BackgroundService
         {
             try
             {
-                Console.WriteLine(integrationEvent.ToString());
                 await _eventDispatcher.PublishAsync(integrationEvent, stoppingToken);
             }
             catch (Exception exception)

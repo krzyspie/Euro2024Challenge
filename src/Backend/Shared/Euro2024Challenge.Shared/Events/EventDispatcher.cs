@@ -18,7 +18,12 @@ public class EventDispatcher : IEventDispatcher
         using var scope = _serviceProvider.CreateScope();
         var handlers = scope.ServiceProvider.GetServices<IEventHandler<TEvent>>();
 
-        var tasks = handlers.Select(x => x.HandleAsync(integrationEvent));
+        var handlerType = typeof(IEventHandler<>).MakeGenericType(integrationEvent.GetType());
+        var handlers3 = scope.ServiceProvider.GetServices(handlerType);
+        var method = handlerType.GetMethod(nameof(IEventHandler<IEvent>.HandleAsync));
+        var tasks = handlers3.Select(x => (Task)method.Invoke(x, new object[] { integrationEvent, cancellationToken }));
+        var tasks2 = handlers.Select(x => x.HandleAsync(integrationEvent, cancellationToken));
+
         await Task.WhenAll(tasks);
     }
 }
