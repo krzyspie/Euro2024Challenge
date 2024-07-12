@@ -1,4 +1,4 @@
-using Euro2024Challenge.Backend.Modules.Players.Shared;
+using Euro2024Challenge.Backend.Modules.Players.Shared.Events;
 using Euro2024Challenge.Shared;
 
 namespace Euro2024Challenge.Backend.Modules.Classification.Application.IntegrationEvents.Handlers;
