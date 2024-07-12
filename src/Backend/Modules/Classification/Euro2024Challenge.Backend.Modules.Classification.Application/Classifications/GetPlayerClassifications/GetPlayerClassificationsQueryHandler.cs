@@ -1,4 +1,5 @@
-﻿using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
+﻿using Euro2024Challenge.Backend.Modules.Classification.Application.Extensions;
+using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
 using MediatR;
 
 namespace Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetPlayerClassifications;

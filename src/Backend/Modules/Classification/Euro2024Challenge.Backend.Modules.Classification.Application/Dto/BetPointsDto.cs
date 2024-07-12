@@ -1,4 +1,4 @@
-﻿namespace Euro2024Challenge.Backend.Modules.Classification.Application;
+﻿namespace Euro2024Challenge.Backend.Modules.Classification.Application.Dto;
 
 public class BetPointsDto
 {

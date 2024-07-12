@@ -1,4 +1,6 @@
-﻿namespace Euro2024Challenge.Backend.Modules.Classification.Application;
+﻿using Euro2024Challenge.Backend.Modules.Classification.Application.Dto;
+
+namespace Euro2024Challenge.Backend.Modules.Classification.Application.Extensions;
 
 public static class BetPointsExtensions
 {
@@ -8,7 +10,7 @@ public static class BetPointsExtensions
         {
             PlayerId = playerId,
             BetsPoints = betPoints
-                        .Select(x => new BetPointsDto(){ BetId = x.BetId, Points = x.Points })
+                        .Select(x => new BetPointsDto() { BetId = x.BetId, Points = x.Points })
                         .ToList()
                         .AsReadOnly()
         };

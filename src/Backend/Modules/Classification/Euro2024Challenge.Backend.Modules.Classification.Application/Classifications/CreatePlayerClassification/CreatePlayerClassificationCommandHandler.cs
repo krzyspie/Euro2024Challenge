@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace Euro2024Challenge.Backend.Modules.Classification.Application;
+namespace Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.CreatePlayerClassification;
 
 public class CreatePlayerClassificationCommandHandler : IRequestHandler<CreatePlayerClassificationCommand, Unit>
 {

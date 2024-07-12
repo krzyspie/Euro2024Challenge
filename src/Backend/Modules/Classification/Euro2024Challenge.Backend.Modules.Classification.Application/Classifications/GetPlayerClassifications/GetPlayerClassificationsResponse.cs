@@ -1,4 +1,4 @@
-﻿using Euro2024Challenge.Backend.Modules.Classification.Domain.Entities;
+﻿using Euro2024Challenge.Backend.Modules.Classification.Application.Dto;
 
 namespace Euro2024Challenge.Backend.Modules.Classification.Application;
 
