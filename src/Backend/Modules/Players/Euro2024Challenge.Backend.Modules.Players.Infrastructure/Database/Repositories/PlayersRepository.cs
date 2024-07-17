@@ -25,7 +25,13 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repo
         {
             return _players.SingleAsync(p => p.Id == playerId);
         }
-        
+
+        public async Task<IEnumerable<Player>> GetAllPlayersMatchBets()
+        {
+            return await _players
+                .Include(m => m.MatchBets).ToListAsync();
+        }
+
         public Task<Player> GetWithBets(Guid playerId)
         {
             return _players
