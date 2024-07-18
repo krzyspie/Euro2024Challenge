@@ -1,4 +1,5 @@
-﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
+﻿using Euro2024Challenge.Backend.Modules.Players.Domain;
+using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 using Euro2024Challenge.Backend.Modules.Players.Shared.Events;
 using Euro2024Challenge.Backend.Modules.Tournament.Shared;
 using Euro2024Challenge.Shared;
@@ -9,11 +10,13 @@ public class MatchUpdatedHandler : IEventHandler<MatchUpdated>
 {
     private readonly IEventBus _eventBus;
     private readonly IPlayersRepository _playersRepository;
+    private readonly IPointsCalculator _pointsCalculator;
 
-    public MatchUpdatedHandler(IEventBus eventBus, IPlayersRepository playersRepository)
+    public MatchUpdatedHandler(IEventBus eventBus, IPlayersRepository playersRepository, IPointsCalculator pointsCalculator)
     {
         _eventBus = eventBus;
         _playersRepository = playersRepository;
+        _pointsCalculator = pointsCalculator;
     }
     public async Task HandleAsync(MatchUpdated integrationEvent, CancellationToken cancellationToken = default)
     {
@@ -23,7 +26,15 @@ public class MatchUpdatedHandler : IEventHandler<MatchUpdated>
 
         foreach(var item in playersMatchBets)
         {
-            await _eventBus.PublishAsync(new PlayersMatchBetsClaculated());
+            var matchBet = item.MatchBets.FirstOrDefault(x => x.MatchId == integrationEvent.MatchId);
+            if (matchBet is null)
+            {
+                continue;
+            }
+
+            var betPoints = _pointsCalculator.CalculateMatchPoints();
+
+            await _eventBus.PublishAsync(new PlayersMatchBetsClaculated(item.Id, integrationEvent.MatchId, betPoints));
         }
     }
 }
