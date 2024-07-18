@@ -1,4 +1,4 @@
-﻿namespace Euro2024Challenge.Backend.Modules.Players.Domain;
+﻿namespace Euro2024Challenge.Backend.Modules.Players.Domain.Services;
 
 public class PointsCalculator : IPointsCalculator
 {
