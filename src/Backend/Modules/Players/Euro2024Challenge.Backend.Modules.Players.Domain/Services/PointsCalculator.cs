@@ -6,6 +6,23 @@ public class PointsCalculator : IPointsCalculator
 {
     public int CalculateMatchPoints(int homeTeamGoals, int awayTeamGoals, MatchResult? bet)
     {
+        if (bet is null)
+        {
+            return 0;
+        }
+        
+        if (bet.HomeTeamGoals == homeTeamGoals && bet.AwayTeamGoals == awayTeamGoals)
+        {
+            return 5;
+        }
+
+        var resultDifference = homeTeamGoals - awayTeamGoals;
+        var betResultDifference = bet.HomeTeamGoals - bet.AwayTeamGoals; 
+        if (resultDifference == betResultDifference)
+        {
+            return 3;
+        }
+
         return 0;
     }
 
