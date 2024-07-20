@@ -1,5 +1,5 @@
-﻿using Euro2024Challenge.Backend.Modules.Players.Domain;
-using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
+﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
+using Euro2024Challenge.Backend.Modules.Players.Domain.Services;
 using Euro2024Challenge.Backend.Modules.Players.Shared.Events;
 using Euro2024Challenge.Backend.Modules.Tournament.Shared;
 using Euro2024Challenge.Shared;

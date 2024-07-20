@@ -4,7 +4,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Domain.Services;
 
 public class PointsCalculator : IPointsCalculator
 {
-    public int CalculateMatchPoints(int homeTeamGoals, int awayTeamGoals, MatchResult? result)
+    public int CalculateMatchPoints(int homeTeamGoals, int awayTeamGoals, MatchResult? bet)
     {
         return 0;
     }
