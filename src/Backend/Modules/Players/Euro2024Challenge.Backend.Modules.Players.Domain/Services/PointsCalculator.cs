@@ -32,7 +32,7 @@ public class PointsCalculator : IPointsCalculator
         return winnerTeamId == tournamentWinnerBet.TeamId ? 10 : 0;
     }
 
-    public int CalculateFootballerGoalsPoints()
+    public int CalculateTopScorerFootballerPoints()
     {
         return 0;
     }
