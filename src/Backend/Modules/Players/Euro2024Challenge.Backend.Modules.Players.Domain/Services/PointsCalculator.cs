@@ -1,4 +1,5 @@
-﻿using Euro2024Challenge.Backend.Modules.Players.Domain.ValueObjects;
+﻿using Euro2024Challenge.Backend.Modules.Players.Domain.Entities;
+using Euro2024Challenge.Backend.Modules.Players.Domain.ValueObjects;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Domain.Services;
 
@@ -26,9 +27,9 @@ public class PointsCalculator : IPointsCalculator
         return 0;
     }
 
-    public int CalculateTournamentWinnerPoints()
+    public int CalculateTournamentWinnerPoints(int winnerTeamId, TournamentWinnerBet tournamentWinnerBet)
     {
-        return 0;
+        return winnerTeamId == tournamentWinnerBet.TeamId ? 10 : 0;
     }
 
     public int CalculateFootballerGoalsPoints()
