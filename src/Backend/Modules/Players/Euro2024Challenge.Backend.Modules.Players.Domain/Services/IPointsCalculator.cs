@@ -6,5 +6,5 @@ public interface IPointsCalculator
 {
     int CalculateMatchPoints(int homeTeamGoals, int awayTeamGoals, ValueObjects.MatchResult? bet);
     int CalculateTournamentWinnerPoints(int winnerTeamId, TournamentWinnerBet tournamentWinnerBet);
-    int CalculateTopScorerFootballerPoints();
+    int CalculateTopScorerFootballerPoints(int playerId, int playerGolas, TopScorerBet topScorerBet);
 }
