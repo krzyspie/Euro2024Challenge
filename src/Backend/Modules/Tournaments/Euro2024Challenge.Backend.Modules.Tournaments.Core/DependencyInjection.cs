@@ -1,4 +1,5 @@
 using Euro2024Challenge.Backend.Modules.Tournament.Shared;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.BackgroundServices;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Database;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
