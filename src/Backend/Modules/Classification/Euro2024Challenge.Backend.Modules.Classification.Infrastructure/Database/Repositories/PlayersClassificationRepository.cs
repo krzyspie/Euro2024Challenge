@@ -24,7 +24,7 @@ public class PlayersClassificationRepository : IClassificationRepository
         return null;
     }
 
-    public async Task Insert(BetPoints points)
+    public async Task Insert(Guid PlayerId, BetPoints points)
     {
         await _playersClassificationCollection.InsertOneAsync(points);
     }
