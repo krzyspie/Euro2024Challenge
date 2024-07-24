@@ -1,4 +1,6 @@
+using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.CreatePlayerClassification;
 using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -33,8 +35,9 @@ public static class ClassificationEndpoints
         return Task.FromResult(Results.Ok("Get for player"));
     }
     
-    private static Task<IResult> CreatePlayerClassification()
+    private static async Task<IResult> CreatePlayerClassification([FromServices] ISender sender, CreatePlayerClassificationRequest request)
     {
-        return Task.FromResult(Results.Ok("Get for player"));
+        await sender.Send(new CreatePlayerClassificationCommand(request.PlayerId, request.BetId, request.Points));
+        return Results.Ok("Get for player");
     }
 }
