@@ -4,6 +4,7 @@ using Euro2024Challenge.Backend.Modules.Players.Application;
 using Euro2024Challenge.Backend.Modules.Players.Infrastructure;
 using Euro2024Challenge.Backend.Modules.Players.Presentation;
 using Microsoft.AspNetCore.Routing;
+using Euro2024Challenge.Backend.Modules.Players.Domain;
 
 namespace Euro2024Challenge.Backend.Modules.Players.Api
 {
@@ -12,6 +13,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Api
         public static IServiceCollection RegisterPlayersModule(this IServiceCollection services)
         {
             services
+                .AddDomain()
                 .AddApplication()
                 .AddInfrastructure()
                 .AddPresentation();
