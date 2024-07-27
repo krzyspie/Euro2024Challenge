@@ -22,7 +22,7 @@ public class PlayersClassificationRepository : IClassificationRepository
     {
         var result = await _playersClassificationCollection.Find(_ => true).ToListAsync();
 
-        return null;
+        return [];
     }
 
     public async Task Insert(Guid playerId, BetPoints points)
