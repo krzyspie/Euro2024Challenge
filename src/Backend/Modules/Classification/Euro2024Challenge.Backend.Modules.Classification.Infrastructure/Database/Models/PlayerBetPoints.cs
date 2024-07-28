@@ -1,18 +1,12 @@
-using MongoDB.Bson.Serialization.Attributes;
-
 namespace Euro2024Challenge.Backend.Modules.Classification.Infrastructure.Database.Models
 {
     public class PlayerBetPoints
     {
-        [BsonId]
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public string Id { get; set; }
 
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public Guid PlayerId { get; set; }
+        public string PlayerId { get; set; }
 
-        [BsonRepresentation(MongoDB.Bson.BsonType.ObjectId)]
-        public Guid BetId { get; set; }
+        public string BetId { get; set; }
         
         public int Points { get; set; }
 

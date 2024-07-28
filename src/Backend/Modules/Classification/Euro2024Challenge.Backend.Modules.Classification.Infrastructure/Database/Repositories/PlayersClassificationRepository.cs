@@ -27,10 +27,12 @@ public class PlayersClassificationRepository : IClassificationRepository
 
     public async Task Insert(Guid playerId, BetPoints points)
     {
+        
         PlayerBetPoints playerBetPoints = new()
         {
-            PlayerId = playerId,
-            BetId = points.BetId,
+            Id = points.Id.ToString(),
+            PlayerId = playerId.ToString(),
+            BetId = points.BetId.ToString(),
             Points = points.Points
         };
 
