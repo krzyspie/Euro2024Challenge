@@ -1,6 +1,5 @@
 using Euro2024Challenge.Backend.Modules.Classification.Domain.Entities;
 using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
-using Euro2024Challenge.Backend.Modules.Classification.Infrastructure.Database.Models;
 using Euro2024Challenge.Backend.Modules.Classification.Infrastructure.Database.Settings;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
@@ -27,7 +26,6 @@ public class PlayersClassificationRepository : IClassificationRepository
 
     public async Task Insert(Guid playerId, BetPoints points)
     {
-        
         PlayerBetPoints playerBetPoints = new()
         {
             Id = points.Id.ToString(),
