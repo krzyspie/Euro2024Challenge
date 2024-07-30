@@ -24,16 +24,8 @@ public class PlayersClassificationRepository : IClassificationRepository
         return [];
     }
 
-    public async Task Insert(Guid playerId, BetPoints points)
+    public async Task Insert(PlayerBetPoints playerBetPoints)
     {
-        PlayerBetPoints playerBetPoints = new()
-        {
-            Id = points.Id.ToString(),
-            PlayerId = playerId.ToString(),
-            BetId = points.BetId.ToString(),
-            Points = points.Points
-        };
-
         await _playersClassificationCollection.InsertOneAsync(playerBetPoints);
     }
 

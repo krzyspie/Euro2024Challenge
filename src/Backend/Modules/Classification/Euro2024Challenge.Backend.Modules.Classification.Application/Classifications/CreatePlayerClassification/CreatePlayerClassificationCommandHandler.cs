@@ -14,9 +14,12 @@ public class CreatePlayerClassificationCommandHandler : IRequestHandler<CreatePl
 
     public async Task<Unit> Handle(CreatePlayerClassificationCommand request, CancellationToken cancellationToken)
     {
-        BetPoints betPoints = new()
+
+        PlayerBetPoints playerBetPoints = new()
         {
-            BetId = request.BetId,
+            Id = Guid.NewGuid().ToString(),
+            PlayerId = request.PlayerId.ToString(),
+            BetId = request.BetId.ToString(),
             Points = request.Points
         };
 
