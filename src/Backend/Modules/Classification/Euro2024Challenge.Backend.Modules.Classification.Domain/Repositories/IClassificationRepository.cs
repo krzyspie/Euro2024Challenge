@@ -4,7 +4,7 @@ namespace Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
 
 public interface IClassificationRepository
 {
-    Task<List<PlayersPoints>> GetAll();
+    Task<List<PlayerBetPoints>> GetAll();
     Task Insert(PlayerBetPoints playerBetPoints);
-    Task<List<BetPoints>> Get(Guid playerId);
+    Task<PlayerBetPoints> Get(Guid playerId);
 }

@@ -17,11 +17,11 @@ public class PlayersClassificationRepository : IClassificationRepository
         _playersClassificationCollection = mongoDatabase.GetCollection<PlayerBetPoints>(options.Value.CollectionName);
     }
 
-    public async Task<List<PlayersPoints>> GetAll()
+    public async Task<List<PlayerBetPoints>> GetAll()
     {
         var result = await _playersClassificationCollection.Find(_ => true).ToListAsync();
 
-        return [];
+        return result;
     }
 
     public async Task Insert(PlayerBetPoints playerBetPoints)
@@ -29,11 +29,11 @@ public class PlayersClassificationRepository : IClassificationRepository
         await _playersClassificationCollection.InsertOneAsync(playerBetPoints);
     }
 
-    public async Task<List<BetPoints>> Get(Guid playerId)
+    public async Task<PlayerBetPoints> Get(Guid playerId)
     {
         var filter = Builders<PlayerBetPoints>.Filter.Eq("player_id", playerId);
         var result = await _playersClassificationCollection.Find(filter).FirstOrDefaultAsync();
         
-        return [];
+        return result;
     }
 }
