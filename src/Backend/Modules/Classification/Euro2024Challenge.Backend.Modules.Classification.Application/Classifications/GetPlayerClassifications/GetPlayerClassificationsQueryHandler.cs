@@ -1,4 +1,5 @@
 ﻿using Euro2024Challenge.Backend.Modules.Classification.Application.Extensions;
+using Euro2024Challenge.Backend.Modules.Classification.Domain.Entities;
 using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
 using MediatR;
 
@@ -15,7 +16,7 @@ public class GetPlayerClassificationsQueryHandler : IRequestHandler<GetPlayerCla
 
     public async Task<GetPlayerClassificationsResponse> Handle(GetPlayerClassificationsQuery request, CancellationToken cancellationToken)
     {
-        IReadOnlyCollection<Domain.Entities.BetPoints> betsPoints = await _classificationRepository.Get(request.PlayerId);
+        IReadOnlyCollection<PlayerBetPoints> betsPoints = await _classificationRepository.Get(request.PlayerId);
 
         return betsPoints.ToGetPlayerClassificationsResponse(request.PlayerId);
     }

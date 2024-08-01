@@ -29,10 +29,10 @@ public class PlayersClassificationRepository : IClassificationRepository
         await _playersClassificationCollection.InsertOneAsync(playerBetPoints);
     }
 
-    public async Task<PlayerBetPoints> Get(Guid playerId)
+    public async Task<IReadOnlyCollection<PlayerBetPoints>> Get(Guid playerId)
     {
         var filter = Builders<PlayerBetPoints>.Filter.Eq("player_id", playerId);
-        var result = await _playersClassificationCollection.Find(filter).FirstOrDefaultAsync();
+        var result = (await _playersClassificationCollection.Find(filter).ToListAsync()).AsReadOnly();
         
         return result;
     }
