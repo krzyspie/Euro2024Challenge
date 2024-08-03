@@ -1,3 +1,4 @@
+using Euro2024Challenge.Backend.Modules.Classification.Application;
 using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.CreatePlayerClassification;
 using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
 using MediatR;
@@ -30,14 +31,17 @@ public static class ClassificationEndpoints
         return Results.Ok(result.FirstOrDefault());
     }
     
-    private static Task<IResult> GetPlayerClassifications(Guid playerId)
+    private static async Task<GetPlayerClassificationsResponse> GetPlayerClassifications([FromServices] ISender sender, Guid playerId)
     {
-        return Task.FromResult(Results.Ok("Get for player"));
+        var result = await sender.Send(new GetPlayerClassificationsQuery(playerId));
+
+        return result;
     }
     
     private static async Task<IResult> CreatePlayerClassification([FromServices] ISender sender, CreatePlayerClassificationRequest request)
     {
         await sender.Send(new CreatePlayerClassificationCommand(request.PlayerId, request.BetId, request.Points));
+        
         return Results.Ok("Get for player");
     }
 }

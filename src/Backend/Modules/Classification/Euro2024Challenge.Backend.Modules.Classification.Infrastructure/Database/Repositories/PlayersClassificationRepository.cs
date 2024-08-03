@@ -31,7 +31,7 @@ public class PlayersClassificationRepository : IClassificationRepository
 
     public async Task<IReadOnlyCollection<PlayerBetPoints>> Get(Guid playerId)
     {
-        var filter = Builders<PlayerBetPoints>.Filter.Eq("player_id", playerId);
+        var filter = Builders<PlayerBetPoints>.Filter.Eq("PlayerId", playerId);
         var result = (await _playersClassificationCollection.Find(filter).ToListAsync()).AsReadOnly();
         
         return result;
