@@ -1,4 +1,5 @@
-﻿using Euro2024Challenge.Backend.Modules.Classification.Application.Dto;
+﻿using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetPlayerClassifications;
+using Euro2024Challenge.Backend.Modules.Classification.Application.Dto;
 
 namespace Euro2024Challenge.Backend.Modules.Classification.Application.Extensions;
 
