@@ -1,4 +1,5 @@
-﻿using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetPlayerClassifications;
+﻿using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetClassifications;
+using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetPlayerClassifications;
 using Euro2024Challenge.Backend.Modules.Classification.Application.Dto;
 
 namespace Euro2024Challenge.Backend.Modules.Classification.Application.Extensions;
@@ -15,6 +16,14 @@ public static class PlayerBetPointsxtensions
                         .ToList()
                         .AsReadOnly()
         };
+    }
+
+    public static GetClassificationsResponse ToGetClassificationsResponse(this IEnumerable<Domain.Entities.PlayerBetPoints> betPoints)
+    {
+        IEnumerable<IGrouping<string, Domain.Entities.PlayerBetPoints>> enumerable = betPoints.GroupBy(p => p.PlayerId);
+
+
+        return null;
     }
 
 }
