@@ -18,12 +18,18 @@ public static class PlayerBetPointsxtensions
         };
     }
 
-    public static GetClassificationsResponse ToGetClassificationsResponse(this IEnumerable<Domain.Entities.PlayerBetPoints> betPoints)
+    public static List<GetClassificationsResponse> ToGetClassificationsResponse(this IEnumerable<Domain.Entities.PlayerBetPoints> betPoints)
     {
-        IEnumerable<IGrouping<string, Domain.Entities.PlayerBetPoints>> enumerable = betPoints.GroupBy(p => p.PlayerId);
+        IEnumerable<IGrouping<string, int>> playerBetPointsSum = betPoints.GroupBy(p => p.PlayerId, p => p.Points);
 
+        List<GetClassificationsResponse> result = new();
 
-        return null;
+        foreach (var item in playerBetPointsSum)
+        {
+            result.Add(new GetClassificationsResponse { PlayerId = Guid.Parse(item.Key), Points = item.Sum() });
+        }
+        
+        return result;
     }
 
 }

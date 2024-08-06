@@ -6,5 +6,5 @@ public class GetClassificationsResponse
 {
     public Guid PlayerId { get; set; }
 
-    public IReadOnlyCollection<BetPointsDto> BetsPoints { get; set; }
+    public int Points { get; set; }
 }
