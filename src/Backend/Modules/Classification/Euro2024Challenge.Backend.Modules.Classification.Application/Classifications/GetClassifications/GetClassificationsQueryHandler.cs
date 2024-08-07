@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetClassifications;
 
-public class GetClassificationsQueryHandler : IRequestHandler<GetClassificationsQuery, GetClassificationsResponse>
+public class GetClassificationsQueryHandler : IRequestHandler<GetClassificationsQuery, IReadOnlyCollection<GetClassificationsResponse>>
 {
     private readonly IClassificationRepository _classificationRepository;
 
@@ -14,10 +14,10 @@ public class GetClassificationsQueryHandler : IRequestHandler<GetClassifications
         _classificationRepository = classificationRepository;
     }
 
-    public async Task<GetClassificationsResponse> Handle(GetClassificationsQuery request, CancellationToken cancellationToken)
+    public async Task<IReadOnlyCollection<GetClassificationsResponse>> Handle(GetClassificationsQuery request, CancellationToken cancellationToken)
     {
         IReadOnlyCollection<PlayerBetPoints> betsPoints = await _classificationRepository.GetAll();
 
-        return new GetClassificationsResponse();
+        return betsPoints.ToGetClassificationsResponse().AsReadOnly();
     }
 }
