@@ -1,4 +1,5 @@
 using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.CreatePlayerClassification;
+using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetClassifications;
 using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetPlayerClassifications;
 using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
 using MediatR;
@@ -25,10 +26,11 @@ public static class ClassificationEndpoints
             .Produces(200);
     }
     
-    private static async Task<IResult> GetClassifications([FromServices] IClassificationRepository repo)
+    private static async Task<IReadOnlyCollection<GetClassificationsResponse>> GetClassifications([FromServices] ISender sender)
     {
-        var result = await repo.GetAll();
-        return Results.Ok(result.FirstOrDefault());
+        var result = await sender.Send(new GetClassificationsQuery());
+
+        return result;
     }
     
     private static async Task<GetPlayerClassificationsResponse> GetPlayerClassifications([FromServices] ISender sender, Guid playerId)
