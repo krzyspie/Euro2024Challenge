@@ -1,7 +1,6 @@
 using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.CreatePlayerClassification;
 using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetClassifications;
 using Euro2024Challenge.Backend.Modules.Classification.Application.Classifications.GetPlayerClassifications;
-using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
