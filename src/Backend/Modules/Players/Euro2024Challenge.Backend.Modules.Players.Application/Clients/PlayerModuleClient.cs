@@ -15,9 +15,17 @@ namespace Euro2024Challenge.Backend.Modules.Players.Application.Clients
 
         public async Task<IDictionary<Guid, string>> GetPlayersUsernames(IEnumerable<Guid> playersIds)
         {
-            await _playersRepository.GetPlayers(playersIds.ToList());
+            List<Domain.Entities.Player> players = await _playersRepository.GetPlayers(playersIds.ToList());
 
-            return null;
+            Dictionary<Guid, string> result = [];
+
+            foreach (var item in playersIds)
+            {
+                Domain.Entities.Player? player = players.FirstOrDefault(x => x.Id == item && !string.IsNullOrWhiteSpace(x.Username));
+                result.Add(item, player is null ? string.Empty : player.Username);
+            }
+
+            return result;
         }
     }
 }
