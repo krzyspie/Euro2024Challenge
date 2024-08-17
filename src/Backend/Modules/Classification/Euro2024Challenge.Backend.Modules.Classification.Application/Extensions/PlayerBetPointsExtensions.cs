@@ -18,7 +18,7 @@ public static class PlayerBetPointsxtensions
         };
     }
 
-    public static List<GetClassificationsResponse> ToGetClassificationsResponse(this IEnumerable<Domain.Entities.PlayerBetPoints> betPoints)
+    public static List<GetClassificationsResponse> ToGetClassificationsResponse(this IEnumerable<Domain.Entities.PlayerBetPoints> betPoints, IDictionary<Guid, string> playersUsernames)
     {
         IEnumerable<IGrouping<string, int>> playerBetPointsSum = betPoints.GroupBy(p => p.PlayerId, p => p.Points);
 
