@@ -23,6 +23,6 @@ public class GetClassificationsQueryHandler : IRequestHandler<GetClassifications
 
         var playersUsernames = await _playerModuleApi.GetPlayersUsernames(betsPoints.Select(x => Guid.Parse(x.PlayerId)));
 
-        return betsPoints.ToGetClassificationsResponse().AsReadOnly();
+        return betsPoints.ToGetClassificationsResponse(playersUsernames).AsReadOnly();
     }
 }
