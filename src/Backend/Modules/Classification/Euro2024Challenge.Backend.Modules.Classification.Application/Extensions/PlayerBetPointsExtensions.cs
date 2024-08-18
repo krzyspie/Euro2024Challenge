@@ -26,7 +26,15 @@ public static class PlayerBetPointsxtensions
 
         foreach (var item in playerBetPointsSum)
         {
-            result.Add(new GetClassificationsResponse { PlayerId = Guid.Parse(item.Key), Points = item.Sum() });
+            string userName = string.Empty;
+            var id = Guid.Parse(item.Key);
+            playersUsernames.TryGetValue(id, out userName);
+            result.Add(new GetClassificationsResponse 
+            { 
+                PlayerId = id,
+                PlayerUsername = userName,
+                Points = item.Sum() 
+            });
         }
         
         return result;
