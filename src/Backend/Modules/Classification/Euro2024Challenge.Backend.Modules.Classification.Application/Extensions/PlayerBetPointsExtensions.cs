@@ -22,7 +22,7 @@ public static class PlayerBetPointsxtensions
     {
         IEnumerable<IGrouping<string, int>> playerBetPointsSum = betPoints.GroupBy(p => p.PlayerId, p => p.Points);
 
-        List<GetClassificationsResponse> result = new();
+        List<GetClassificationsResponse> result = [];
 
         foreach (var item in playerBetPointsSum)
         {
