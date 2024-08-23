@@ -1,14 +1,18 @@
+using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
+
 namespace Euro2024Challenge.Backend.Modules.Classification.Application.Services;
 
-public class PlayerClassifiactionService
+public class PlayerClassifiactionService : IPlayerClassificationService
 {
-    public PlayerClassifiactionService()
+    private readonly IClassificationRepository _classificationRepository;
+
+    public PlayerClassifiactionService(IClassificationRepository classificationRepository)
     {
-        
+        _classificationRepository = classificationRepository;
     }
 
-    public void UpdatePlayerPoints()
+    public Task UpdatePlayerPoints()
     {
-
+        return Task.CompletedTask;
     }
 }
