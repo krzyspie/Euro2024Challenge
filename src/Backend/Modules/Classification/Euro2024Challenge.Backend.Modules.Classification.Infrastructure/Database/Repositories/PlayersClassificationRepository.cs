@@ -1,6 +1,7 @@
 using Euro2024Challenge.Backend.Modules.Classification.Domain.Entities;
 using Euro2024Challenge.Backend.Modules.Classification.Domain.Repositories;
 using Euro2024Challenge.Backend.Modules.Classification.Infrastructure.Database.Settings;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 
@@ -40,5 +41,13 @@ public class PlayersClassificationRepository : IClassificationRepository
         var result = (await _playersClassificationCollection.Find(filter).ToListAsync()).AsReadOnly();
         
         return result;
+    }
+
+    public async Task<IReadOnlyCollection<PlayerBetPoints>> GetBetPoints(Guid playerId, int betId)
+    {
+        return (await _playersClassificationCollection.AsQueryable()
+            .Where(pc => pc.PlayerId == playerId.ToString() && pc.BetId == betId.ToString())
+            .ToListAsync())
+            .AsReadOnly();
     }
 }
