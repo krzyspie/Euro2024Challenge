@@ -2,4 +2,4 @@
 
 namespace Euro2024Challenge.Backend.Modules.Players.Shared.Events;
 
-public record class PlayersMatchBetsClaculated(Guid PlayerId, int MatchId, int Points) : IEvent;
+public record class PlayerBetClaculated(Guid PlayerId, int BetId, int Points) : IEvent;

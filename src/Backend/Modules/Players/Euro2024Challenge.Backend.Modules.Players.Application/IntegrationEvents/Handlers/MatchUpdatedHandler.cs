@@ -34,7 +34,7 @@ public class MatchUpdatedHandler : IEventHandler<MatchUpdated>
 
             var betPoints = _pointsCalculator.CalculateMatchPoints(integrationEvent.HomeTeamGoals, integrationEvent.AwayTeamGoals, matchBet.Result);
 
-            await _eventBus.PublishAsync(new PlayersMatchBetsClaculated(item.Id, integrationEvent.MatchId, betPoints));
+            await _eventBus.PublishAsync(new PlayerBetClaculated(item.Id, integrationEvent.MatchId, betPoints));
         }
     }
 }
