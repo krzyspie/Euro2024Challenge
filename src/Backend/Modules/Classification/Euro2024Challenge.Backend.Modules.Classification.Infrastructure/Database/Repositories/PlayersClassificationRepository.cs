@@ -45,9 +45,9 @@ public class PlayersClassificationRepository : IClassificationRepository
 
     public async Task<IReadOnlyCollection<PlayerBetPoints>> GetBetPoints(Guid playerId, int betId)
     {
-        return (await _playersClassificationCollection.AsQueryable()
-            .Where(pc => pc.PlayerId == playerId.ToString() && pc.BetId == betId.ToString())
-            .ToListAsync())
-            .AsReadOnly();
+        var builder = Builders<PlayerBetPoints>.Filter;
+        var filter = builder.Eq("PlayerId", playerId) & builder.Eq("BetId", betId);
+
+        return  (await _playersClassificationCollection.Find(filter).ToListAsync()).AsReadOnly();
     }
 }
