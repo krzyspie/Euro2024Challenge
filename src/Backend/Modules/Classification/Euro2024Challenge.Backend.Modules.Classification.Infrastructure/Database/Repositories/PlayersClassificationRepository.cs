@@ -43,11 +43,11 @@ public class PlayersClassificationRepository : IClassificationRepository
         return result;
     }
 
-    public async Task<IReadOnlyCollection<PlayerBetPoints>> GetBetPoints(Guid playerId, int betId)
+    public async Task<PlayerBetPoints> GetBetPoints(Guid playerId, int betId)
     {
         var builder = Builders<PlayerBetPoints>.Filter;
         var filter = builder.Eq("PlayerId", playerId) & builder.Eq("BetId", betId);
 
-        return  (await _playersClassificationCollection.Find(filter).ToListAsync()).AsReadOnly();
+        return await _playersClassificationCollection.Find(filter).SingleOrDefaultAsync();
     }
 }

@@ -17,6 +17,6 @@ public class MatchUpdatedHandler : IEventHandler<PlayerBetClaculated>
     {
         Console.WriteLine("PlayersMatchBetsClaculated integrationEvent");
         
-        await _playerClassificationService.UpdatePlayerPoints(integrationEvent.PlayerId, integrationEvent.BetId);
+        await _playerClassificationService.UpdatePlayerPoints(integrationEvent.PlayerId, integrationEvent.BetId, integrationEvent.Points);
     }
 }
