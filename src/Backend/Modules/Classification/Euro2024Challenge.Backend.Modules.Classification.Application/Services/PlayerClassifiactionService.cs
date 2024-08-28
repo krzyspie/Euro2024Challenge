@@ -35,7 +35,7 @@ public class PlayerClassifiactionService : IPlayerClassificationService
                 Id = playerBetPoints.Id,
                 PlayerId = playerId.ToString(),
                 BetId = betId.ToString(),
-                Points = points
+                Points = playerBetPoints.Points + points
             };
             
             await _classificationRepository.Update(betPoints);

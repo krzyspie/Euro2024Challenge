@@ -32,7 +32,12 @@ public class PlayersClassificationRepository : IClassificationRepository
 
     public async Task Update(PlayerBetPoints playerBetPoints)
     {
+        var builder = Builders<PlayerBetPoints>.Filter;
+        var filter = builder.Eq(x => x.PlayerId, playerBetPoints.PlayerId) & builder.Eq(x => x.BetId, playerBetPoints.BetId);
         
+        var update = Builders<PlayerBetPoints>.Update.Set(x => x.Points, playerBetPoints.Points);
+ 
+        await _playersClassificationCollection.UpdateOneAsync(filter, update);     
     }
 
     public async Task<IReadOnlyCollection<PlayerBetPoints>> Get(Guid playerId)
