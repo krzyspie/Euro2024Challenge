@@ -57,7 +57,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{38C7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{8A7D3668-2EF2-4164-B943-8D85716EEBFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainTests", "tests\Modules\Players\DomainTests\DomainTests.csproj", "{7A150AE0-D775-4193-8E7F-239AD4FFA802}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Players.Domain.Tests", "tests\Modules\Players\DomainTests\Modules.Players.Domain.Tests.csproj", "{7A150AE0-D775-4193-8E7F-239AD4FFA802}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
