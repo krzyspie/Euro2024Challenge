@@ -24,6 +24,15 @@ public class PointsCalculator : IPointsCalculator
             return 3;
         }
 
+        if (homeTeamGoals > awayTeamGoals && bet.HomeTeamGoals > bet.AwayTeamGoals)
+        {
+            return 2;
+        }
+        if (homeTeamGoals < awayTeamGoals && bet.HomeTeamGoals < bet.AwayTeamGoals)
+        {
+            return 2;
+        }
+
         return 0;
     }
 

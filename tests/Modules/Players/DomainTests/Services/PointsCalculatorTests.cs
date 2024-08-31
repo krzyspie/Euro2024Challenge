@@ -1,15 +1,10 @@
 using Euro2024Challenge.Backend.Modules.Players.Domain.Services;
 using Euro2024Challenge.Backend.Modules.Players.Domain.ValueObjects;
 
-namespace DomainTests;
+namespace Modules.Players.Domain.Tests.Services;
 
 public class Tests
 {
-    [SetUp]
-    public void Setup()
-    {
-    }
-
     [Test]
     public void CalculateMatchPointsWhenMissingMatchResult()
     {
@@ -49,5 +44,21 @@ public class Tests
 
         //Assert
         Assert.That(result, Is.EqualTo(3));
+    }
+
+
+    [TestCase(2, 1, 3, 1)]
+    [TestCase(1, 2, 1, 3)]
+    public void CalculateMatchPointsWhenBetWinnerAndMatchWinnerEquals(int homeTeamGoals, int awayTeamGoals, int betHomeTeamGoals, int betAwayTemaGoals)
+    {
+        //Arrange
+        PointsCalculator pointsCalculator = new();
+        var matchResult = MatchResult.CreateNew((ushort)betHomeTeamGoals, (ushort)betAwayTemaGoals);
+
+        //Act
+        var result = pointsCalculator.CalculateMatchPoints(homeTeamGoals, awayTeamGoals, matchResult);
+
+        //Assert
+        Assert.That(result, Is.EqualTo(2));
     }
 }
