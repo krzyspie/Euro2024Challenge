@@ -59,6 +59,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Players", "Players", "{8A7D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Players.Domain.Tests", "tests\Modules\Players\DomainTests\Modules.Players.Domain.Tests.csproj", "{7A150AE0-D775-4193-8E7F-239AD4FFA802}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tournaments", "Tournaments", "{7F3340E0-4E49-4CE2-9FEF-82119C08A759}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Modules.Tournamnets.Core.Tests", "tests\Modules\Tournaments\Tournamnets.Core.Tests\Modules.Tournamnets.Core.Tests.csproj", "{30ECC0BF-F259-48B4-91B9-BA91AD05EE86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -137,6 +141,10 @@ Global
 		{7A150AE0-D775-4193-8E7F-239AD4FFA802}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A150AE0-D775-4193-8E7F-239AD4FFA802}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A150AE0-D775-4193-8E7F-239AD4FFA802}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30ECC0BF-F259-48B4-91B9-BA91AD05EE86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30ECC0BF-F259-48B4-91B9-BA91AD05EE86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30ECC0BF-F259-48B4-91B9-BA91AD05EE86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30ECC0BF-F259-48B4-91B9-BA91AD05EE86}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -164,6 +172,8 @@ Global
 		{38C74EEB-87FC-45F9-B465-0DD1C2B0B44E} = {5419A986-9252-4F96-B53F-E875A3E37FBC}
 		{8A7D3668-2EF2-4164-B943-8D85716EEBFE} = {38C74EEB-87FC-45F9-B465-0DD1C2B0B44E}
 		{7A150AE0-D775-4193-8E7F-239AD4FFA802} = {8A7D3668-2EF2-4164-B943-8D85716EEBFE}
+		{7F3340E0-4E49-4CE2-9FEF-82119C08A759} = {38C74EEB-87FC-45F9-B465-0DD1C2B0B44E}
+		{30ECC0BF-F259-48B4-91B9-BA91AD05EE86} = {7F3340E0-4E49-4CE2-9FEF-82119C08A759}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8EBAAD8C-09EA-4FBD-A644-3267E2B056BA}
