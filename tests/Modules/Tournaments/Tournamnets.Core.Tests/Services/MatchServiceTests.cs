@@ -1,6 +1,6 @@
-namespace Tournamnets.Core.Tests;
+namespace Modules.Tournamnets.Core.Tests.Services;
 
-public class Tests
+public class MatchServiceTests
 {
     [SetUp]
     public void Setup()
