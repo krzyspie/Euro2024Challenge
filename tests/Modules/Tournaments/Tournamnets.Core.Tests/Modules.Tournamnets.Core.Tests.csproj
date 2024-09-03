@@ -22,4 +22,8 @@
     <Using Include="NUnit.Framework" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\src\Backend\Modules\Tournaments\Euro2024Challenge.Backend.Modules.Tournaments.Core\Euro2024Challenge.Backend.Modules.Tournaments.Core.csproj" />
+  </ItemGroup>
+
 </Project>
