@@ -6,6 +6,7 @@ using NSubstitute;
 
 namespace Modules.Tournamnets.Core.Tests.Services;
 
+[TestFixture]
 public class MatchServiceTests
 {
     private IMatchRepository _matchRepositorySubstitute;
@@ -96,6 +97,52 @@ public class MatchServiceTests
             Assert.That(second.AwayTeamName, Is.EqualTo("Croatia"));
             Assert.That(second.AwayTeamGoals, Is.EqualTo(2));
             Assert.That(second.StartHour, Is.EqualTo(matchDate));
+        });
+    }
+
+    [Test]
+    public async Task GetByNumberReturnsMatchWithGivenNumber()
+    {
+        //Arrange
+        var matchDate = DateTime.Today;
+        var match = new Match
+        {
+            Id = 1,
+            Number = 3,
+            AwayTeamId = 111,
+            AwayTeamGoals = 0,
+            GuestTeamId = 112,
+            GuestTeamGoals = 1,
+            StartHour = matchDate
+        };
+
+        var teams = new Dictionary<int, string>()
+        {
+            { 111, "Albania" },
+            { 112, "Belgium" },
+            { 113, "Croatia" },
+            { 114, "Portugal" },
+        };
+        
+        _matchRepositorySubstitute.GetByNumber(3).Returns(match);
+        _teamRepositorSubstitute.GetAllTeamsAsync().Returns(teams);
+
+        //Act
+        var result = await matchService.GetByNumber(3);
+
+        //Assert
+        Assert.That(result, Is.Not.Null);    
+        Assert.Multiple(() =>
+        {
+            Assert.That(result.Id, Is.EqualTo(1));
+            Assert.That(result.Number, Is.EqualTo(3));
+            Assert.That(result.GuestTeamId, Is.EqualTo(112));
+            Assert.That(result.GuestTeamName, Is.EqualTo("Belgium"));
+            Assert.That(result.GuestTeamGoals, Is.EqualTo(1));
+            Assert.That(result.AwayTeamId, Is.EqualTo(111));
+            Assert.That(result.AwayTeamName, Is.EqualTo("Albania"));
+            Assert.That(result.AwayTeamGoals, Is.EqualTo(0));
+            Assert.That(result.StartHour, Is.EqualTo(matchDate));
         });
     }
 }
