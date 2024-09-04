@@ -20,8 +20,6 @@ public class MatchServiceTests
         _matchRepositorySubstitute = Substitute.For<IMatchRepository>();
         _teamRepositorSubstitute = Substitute.For<ITeamRepository>();
         _eventBusSubstitute = Substitute.For<IEventBus>();
-
-        matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
     }
 
     [Test]
@@ -31,8 +29,7 @@ public class MatchServiceTests
         var matchDate = DateTime.Today;
         var matches = new List<Match>()
         {
-            new Match
-            {
+            new() {
                 Id = 1,
                 Number = 1,
                 AwayTeamId = 111,
@@ -41,8 +38,7 @@ public class MatchServiceTests
                 GuestTeamGoals = 1,
                 StartHour = matchDate
             },
-            new Match
-            {
+            new() {
                 Id = 2,
                 Number = 2,
                 AwayTeamId = 113,
@@ -63,6 +59,8 @@ public class MatchServiceTests
         
         _matchRepositorySubstitute.GetAll().Returns(matches);
         _teamRepositorSubstitute.GetAllTeamsAsync().Returns(teams);
+
+        matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
 
         //Act
         var result = await matchService.GetAll();
@@ -104,11 +102,12 @@ public class MatchServiceTests
     public async Task GetByNumberReturnsMatchWithGivenNumber()
     {
         //Arrange
+        var matchNumber = 3;
         var matchDate = DateTime.Today;
         var match = new Match
         {
             Id = 1,
-            Number = 3,
+            Number = matchNumber,
             AwayTeamId = 111,
             AwayTeamGoals = 0,
             GuestTeamId = 112,
@@ -124,24 +123,26 @@ public class MatchServiceTests
             { 114, "Portugal" },
         };
         
-        _matchRepositorySubstitute.GetByNumber(3).Returns(match);
+        _matchRepositorySubstitute.GetByNumber(matchNumber).Returns(match);
         _teamRepositorSubstitute.GetAllTeamsAsync().Returns(teams);
 
+        matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
+
         //Act
-        var result = await matchService.GetByNumber(3);
+        var result = await matchService.GetByNumber(matchNumber);
 
         //Assert
         Assert.That(result, Is.Not.Null);    
         Assert.Multiple(() =>
         {
-            Assert.That(result.Id, Is.EqualTo(1));
-            Assert.That(result.Number, Is.EqualTo(3));
-            Assert.That(result.GuestTeamId, Is.EqualTo(112));
+            Assert.That(result.Id, Is.EqualTo(match.Id));
+            Assert.That(result.Number, Is.EqualTo(matchNumber));
+            Assert.That(result.GuestTeamId, Is.EqualTo(match.GuestTeamId));
             Assert.That(result.GuestTeamName, Is.EqualTo("Belgium"));
-            Assert.That(result.GuestTeamGoals, Is.EqualTo(1));
-            Assert.That(result.AwayTeamId, Is.EqualTo(111));
+            Assert.That(result.GuestTeamGoals, Is.EqualTo(match.GuestTeamGoals));
+            Assert.That(result.AwayTeamId, Is.EqualTo(match.AwayTeamId));
             Assert.That(result.AwayTeamName, Is.EqualTo("Albania"));
-            Assert.That(result.AwayTeamGoals, Is.EqualTo(0));
+            Assert.That(result.AwayTeamGoals, Is.EqualTo(match.AwayTeamGoals));
             Assert.That(result.StartHour, Is.EqualTo(matchDate));
         });
     }
