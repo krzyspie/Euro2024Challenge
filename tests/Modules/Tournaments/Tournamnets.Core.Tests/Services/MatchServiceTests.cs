@@ -1,3 +1,5 @@
+using Euro2024Challenge.Backend.Modules.Tournament.Shared;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.DTO;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Entities;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
@@ -12,7 +14,7 @@ public class MatchServiceTests
     private IMatchRepository _matchRepositorySubstitute;
     private ITeamRepository _teamRepositorSubstitute;
     private IEventBus _eventBusSubstitute;
-    MatchService matchService;
+    private MatchService _matchService;
 
     [SetUp]
     public void Setup()
@@ -60,10 +62,10 @@ public class MatchServiceTests
         _matchRepositorySubstitute.GetAll().Returns(matches);
         _teamRepositorSubstitute.GetAllTeamsAsync().Returns(teams);
 
-        matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
+        _matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
 
         //Act
-        var result = await matchService.GetAll();
+        var result = await _matchService.GetAll();
 
         //Assert
         Assert.That(result, Is.Not.Empty);
@@ -126,10 +128,10 @@ public class MatchServiceTests
         _matchRepositorySubstitute.GetByNumber(matchNumber).Returns(match);
         _teamRepositorSubstitute.GetAllTeamsAsync().Returns(teams);
 
-        matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
+        _matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
 
         //Act
-        var result = await matchService.GetByNumber(matchNumber);
+        var result = await _matchService.GetByNumber(matchNumber);
 
         //Assert
         Assert.That(result, Is.Not.Null);    
@@ -148,7 +150,7 @@ public class MatchServiceTests
     }
 
     [Test]
-    public async Task GetByNumbersReturnsAMatchesForGivenNumbers()
+    public async Task GetByNumbersReturnsMatchesForGivenNumbers()
     {
         //Arrange
         var matchDate = DateTime.Today;
@@ -186,10 +188,10 @@ public class MatchServiceTests
         _matchRepositorySubstitute.GetByNumbers(numbers).Returns(matches);
         _teamRepositorSubstitute.GetAllTeamsAsync().Returns(teams);
 
-        matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
+        _matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
 
         //Act
-        var result = await matchService.GetByNumbers(numbers);
+        var result = await _matchService.GetByNumbers(numbers);
 
         //Assert
         Assert.That(result, Is.Not.Empty);
@@ -222,5 +224,64 @@ public class MatchServiceTests
             Assert.That(second.AwayTeamGoals, Is.EqualTo(2));
             Assert.That(second.StartHour, Is.EqualTo(matchDate));
         });
+    }
+
+    [Test]
+    public async Task AddCallsRepositoryAddAsync()
+    {
+        //Arrange
+        int number = 1;
+        int awayTeamId = 111;
+        int awayTeamGoals = 0;
+        int guestTeamId = 112;
+        int guestTeamGoals = 1;
+        DateTime startHour = DateTime.Today;
+
+        _matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
+
+        AddMatchRequest match = new(number, guestTeamId, awayTeamId, guestTeamGoals, awayTeamGoals, startHour);
+
+        //Act
+        await _matchService.Add(match);
+
+        //Assert
+        await _matchRepositorySubstitute.Received(1).AddAsync(Arg.Is<Match>(x => x.Number == number 
+                    && x.GuestTeamId == guestTeamId && x.GuestTeamGoals == guestTeamGoals
+                    && x.AwayTeamId == awayTeamId && x.AwayTeamGoals == awayTeamGoals && x.StartHour == startHour));
+    }
+
+    [Test]
+    public async Task UpdateResultCallsRepositoryUpdateMethodAndPublishMatchUpdatedEvent()
+    {
+        //Arrange
+        int number = 1;
+        int awayTeamGoals = 0;
+        int guestTeamGoals = 1;
+
+        var match = new Match
+        {
+            Id = 1,
+            Number = number,
+            AwayTeamId = 111,
+            AwayTeamGoals = 0,
+            GuestTeamId = 112,
+            GuestTeamGoals = 0,
+            StartHour = DateTime.Today
+        };
+        
+        _matchRepositorySubstitute.GetByNumber(number).Returns(match);
+
+        _matchService = new MatchService(_matchRepositorySubstitute, _teamRepositorSubstitute, _eventBusSubstitute);
+
+        //Act
+        await _matchService.UpdateResult(number, guestTeamGoals, awayTeamGoals);
+
+        //Assert
+        await _matchRepositorySubstitute.Received(1).UpdateAsync(Arg.Is<Match>(x => x.Number == number 
+                    && x.GuestTeamId == match.GuestTeamId && x.GuestTeamGoals == guestTeamGoals
+                    && x.AwayTeamId == match.AwayTeamId && x.AwayTeamGoals == awayTeamGoals && x.StartHour == match.StartHour));
+
+        await _eventBusSubstitute.Received(1).PublishAsync(Arg.Is<MatchUpdated>(x => x.MatchId == match.Id
+                                    && x.HomeTeamGoals == guestTeamGoals && x.AwayTeamGoals == awayTeamGoals));
     }
 }
