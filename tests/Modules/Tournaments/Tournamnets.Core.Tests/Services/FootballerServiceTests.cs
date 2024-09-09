@@ -34,7 +34,7 @@ namespace Modules.Tournamnets.Core.Tests.Services
             };
 
             _footballerRepositorySubstitute.Get(id).Returns(footballer);
-            
+
             _footballerService = new FootballerService(_footballerRepositorySubstitute);
 
             //Act
@@ -48,6 +48,30 @@ namespace Modules.Tournamnets.Core.Tests.Services
                 Assert.That(result.Id, Is.EqualTo(footballer.Id));
                 Assert.That(result.TeamName, Is.EqualTo(footballer.Team.Name));
             });
+        }
+
+        [Test]
+        public async Task UpdateGoalsCallsUpdateFootballerGoals()
+        {
+            //Arrange
+            int id = 1;
+            int goals = 3;
+            Footballer footballer = new()
+            {
+                Id = 1,
+                FullName = "Test Name",
+                Goals = 1
+            };
+
+            _footballerRepositorySubstitute.Get(id).Returns(footballer);
+            
+            _footballerService = new FootballerService(_footballerRepositorySubstitute);
+
+            //Act
+            await _footballerService.UpdateGoals(id, goals);
+
+            //Assert
+            await _footballerRepositorySubstitute.Received(1).UpdateAsync(Arg.Is<Footballer>(x => x.Goals == goals));
         }
     }
 }
