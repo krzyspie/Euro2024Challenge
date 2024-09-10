@@ -1,4 +1,5 @@
 using Euro2024Challenge.Backend.Modules.Tournament.Shared.DTO;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.Cache;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Extensions;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 using Microsoft.Extensions.Caching.Memory;
@@ -7,11 +8,10 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
 
 public class TeamService : ITeamService
 {
-    private const string TeamsKey = "teams-key";
     private readonly ITeamRepository _teamRepository;
-    private readonly IMemoryCache _cache;
+    private readonly ITeamsCache _cache;
 
-    public TeamService(ITeamRepository teamRepository, IMemoryCache cache)
+    public TeamService(ITeamRepository teamRepository, ITeamsCache cache)
     {
         _teamRepository = teamRepository;
         _cache = cache;
@@ -19,19 +19,19 @@ public class TeamService : ITeamService
     
     public async Task<IEnumerable<TeamResponse>> GetTeamsAsync(List<int> ids)
     {
-        SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+        SemaphoreSlim semaphore = new(1, 1);
 
-        if(!_cache.TryGetValue(TeamsKey, out Dictionary<int, string>? allTeams))
+        if(!_cache.TryGetValue(out Dictionary<int, string>? allTeams))
         {
             try
             {
                 await semaphore.WaitAsync();
 
-                if(!_cache.TryGetValue(TeamsKey, out allTeams))
+                if(!_cache.TryGetValue(out allTeams))
                 {
                     var teams = await _teamRepository.GetAllTeamsAsync();
                 
-                    _cache.Set(TeamsKey, teams);
+                    _cache.Set(teams);
                 
                     var teamsDto = teams.ToTeamsResponse();
 
@@ -51,7 +51,7 @@ public class TeamService : ITeamService
 
     public async Task<TeamResponse> GetTeamAsync(int id)
     {
-        SemaphoreSlim semaphore = new SemaphoreSlim(1, 1);
+        SemaphoreSlim semaphore = new(1, 1);
 
         if(!_cache.TryGetValue(TeamsKey, out Dictionary<int, string>? allTeams))
         {
