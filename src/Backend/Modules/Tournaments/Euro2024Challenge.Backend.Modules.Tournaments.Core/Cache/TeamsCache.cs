@@ -16,7 +16,7 @@ public class TeamsCache : ITeamsCache
     {
         if (value != null && value.Any())
         {
-            _cache.Set(TeamsCache, value);
+            _cache.Set(TeamsKey, value);
         }
     }
 

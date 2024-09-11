@@ -53,16 +53,16 @@ public class TeamService : ITeamService
     {
         SemaphoreSlim semaphore = new(1, 1);
 
-        if(!_cache.TryGetValue(TeamsKey, out Dictionary<int, string>? allTeams))
+        if(!_cache.TryGetValue(out Dictionary<int, string>? allTeams))
         {
             try
             {
                 await semaphore.WaitAsync();
-                if(!_cache.TryGetValue(TeamsKey, out allTeams))
+                if(!_cache.TryGetValue(out allTeams))
                 {
                     var teams = await _teamRepository.GetAllTeamsAsync();
                 
-                    _cache.Set(TeamsKey, teams);
+                    _cache.Set(teams);
                 
                     var teamsDto = teams.ToTeamsResponse();
 
