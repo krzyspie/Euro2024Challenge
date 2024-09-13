@@ -3,6 +3,7 @@ using Euro2024Challenge.Backend.Modules.Tournaments.Core.BackgroundServices;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Database;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Repositories;
 using Euro2024Challenge.Backend.Modules.Tournaments.Core.Services;
+using Euro2024Challenge.Backend.Modules.Tournaments.Core.Cache;
 using Euro2024Challenge.Shared.Database;
 using Microsoft.Extensions.DependencyInjection;
 using Quartz;
@@ -22,9 +23,8 @@ namespace Euro2024Challenge.Backend.Modules.Tournaments.Core
                 .AddScoped<IMatchService, MatchService>()
                 .AddScoped<IFootballerRepository, FootballerRepository>()
                 .AddScoped<IFootballerService, FootballerService>()
-                .AddTransient<ITournamentModuleApi, TournamentModuleApi>();
-            
-
+                .AddTransient<ITournamentModuleApi, TournamentModuleApi>()
+                .AddSingleton<ITeamsCache, TeamsCache>();
 
             services.AddQuartz(configure => 
             {
