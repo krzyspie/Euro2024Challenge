@@ -35,4 +35,11 @@ public static class PlayersEndpoints
 
         return Results.Ok(player);
     }
+
+    private static async Task<IResult> GetAllPlayers([FromServices] ISender sender)
+    {
+        var players = await sender.Send(new GetPlayersQuery());
+
+        return Results.Ok(players);
+    }
 }
