@@ -8,6 +8,7 @@ namespace Euro2024Challenge.Backend.Modules.Players.Domain.Repositories
 
         Task<Player> Get(Guid playerId);
         Task<List<Player>> GetPlayers(List<Guid> playersIds);
+        Task<List<Player>> GetAllPlayers();
         Task<Player> GetWithBets(Guid playerId);
         Task<IEnumerable<Player>> GetAllPlayersMatchBets();
     }

@@ -45,5 +45,10 @@ namespace Euro2024Challenge.Backend.Modules.Players.Infrastructure.Database.Repo
                 .Include(s => s.TopScorerBet)
                 .SingleAsync(p => p.Id == playerId);
         }
+
+        public Task<List<Player>> GetAllPlayers()
+        {
+            return _players.ToListAsync();
+        }
     }
 }
