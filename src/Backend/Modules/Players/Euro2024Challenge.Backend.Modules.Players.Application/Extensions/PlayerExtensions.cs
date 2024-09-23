@@ -17,6 +17,16 @@ public static class PlayerExtensions
         };
     }
     
+    public static IEnumerable<PlayerDto> ToPlayersDto(this IEnumerable<Player> players)
+    {
+        return players.Select(x => new PlayerDto
+        {
+            Id = x.Id,
+            Username = x.Username,
+            Email = x.Email
+        });
+    }
+
     public static PlayerBetsDto ToPlayerBetsDto(this Player player, TeamResponse? tournamentWinnerTeam, FootballerResponse? footballer, IReadOnlyCollection<MatchResponse> matches)
     {
         return new PlayerBetsDto

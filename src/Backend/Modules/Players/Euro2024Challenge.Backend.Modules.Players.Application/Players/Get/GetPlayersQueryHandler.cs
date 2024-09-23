@@ -1,4 +1,5 @@
 
+using Euro2024Challenge.Backend.Modules.Players.Application.Extensions;
 using Euro2024Challenge.Backend.Modules.Players.Application.Players.DTO;
 using Euro2024Challenge.Backend.Modules.Players.Domain.Repositories;
 using MediatR;
@@ -16,6 +17,6 @@ public class GetPlayersQueryHandler : IRequestHandler<GetPlayersQuery, IEnumerab
 
     public async Task<IEnumerable<PlayerDto>> Handle(GetPlayersQuery request, CancellationToken cancellationToken)
     {
-        return await _playersRepository.GetAllPlayers();
+        return (await _playersRepository.GetAllPlayers()).ToPlayersDto();
     }
 }
