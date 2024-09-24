@@ -20,6 +20,9 @@ public static class PlayersEndpoints
         
         players.MapGet("/{playerId:guid}", GetPlayer)
             .Produces(200);
+
+        players.MapGet("", GetAllPlayers)
+            .Produces(200);
     }
 
     private static async Task<IResult> CreatePlayer([FromServices] ISender sender, CreatePlayerRequest request)
