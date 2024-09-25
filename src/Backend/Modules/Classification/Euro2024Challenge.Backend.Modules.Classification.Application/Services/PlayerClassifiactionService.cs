@@ -12,7 +12,7 @@ public class PlayerClassifiactionService : IPlayerClassificationService
         _classificationRepository = classificationRepository;
     }
 
-    public async Task UpdatePlayerPoints(Guid playerId, int betId, int points)
+    public async Task UpdatePlayerPoints(Guid playerId, Guid betId, int points)
     {
         var playerBetPoints = await _classificationRepository.GetBetPoints(playerId, betId);
         

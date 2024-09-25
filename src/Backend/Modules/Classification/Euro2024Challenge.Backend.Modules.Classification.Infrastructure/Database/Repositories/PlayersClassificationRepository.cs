@@ -48,7 +48,7 @@ public class PlayersClassificationRepository : IClassificationRepository
         return result;
     }
 
-    public async Task<PlayerBetPoints> GetBetPoints(Guid playerId, int betId)
+    public async Task<PlayerBetPoints> GetBetPoints(Guid playerId, Guid betId)
     {
         var builder = Builders<PlayerBetPoints>.Filter;
         var filter = builder.Eq("PlayerId", playerId) & builder.Eq("BetId", betId);
