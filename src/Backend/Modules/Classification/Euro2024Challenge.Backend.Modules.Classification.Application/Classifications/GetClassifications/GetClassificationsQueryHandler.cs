@@ -21,7 +21,7 @@ public class GetClassificationsQueryHandler : IRequestHandler<GetClassifications
     {
         IReadOnlyCollection<PlayerBetPoints> betsPoints = await _classificationRepository.GetAll();
 
-        var playersUsernames = await _playerModuleApi.GetPlayersUsernames(betsPoints.Select(x => Guid.Parse(x.PlayerId)));
+        var playersUsernames = await _playerModuleApi.GetPlayersUsernames(betsPoints.Select(x => Guid.Parse(x.PlayerId)).Distinct());
 
         return betsPoints.ToGetClassificationsResponse(playersUsernames).AsReadOnly();
     }
