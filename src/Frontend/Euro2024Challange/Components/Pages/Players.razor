@@ -1,6 +1,29 @@
 ﻿@page "/players"
+
+@inject HttpClient client
+
 <h3>Players</h3>
+<div>
+        @foreach (var player in players)
+        {
+            <div>
+                <div>@player.Username, @player.Email</div>
+            </div>
+        }
+</div>
 
 @code {
+    private int number = 0;
+    private List<Player> players = new();
+    protected override async Task OnInitializedAsync()
+    {
+        number++;
+        players = await client.GetFromJsonAsync<List<Player>>("/players-module/players");
+    }
 
+    private class Player
+    {
+        public string Email {get; set; }
+        public string Username {get; set; }
+    }
 }
