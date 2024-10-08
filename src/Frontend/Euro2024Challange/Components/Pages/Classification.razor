@@ -1,5 +1,7 @@
 ﻿@page "/classification"
 
+@using Models
+
 @inject HttpClient client
 
 <h3>Classification</h3>
@@ -9,11 +11,5 @@
     protected override async Task OnInitializedAsync()
     {
         classifications = await client.GetFromJsonAsync<List<PlayersClassification>>("/classifications-module/classifications");
-    }
-
-    private class PlayersClassification
-    {
-        public string PlayerUsername { get; set; }
-        public int Points { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿@page "/players"
 
+@using Models
+
 @inject HttpClient client
 
 <h3>Players</h3>
@@ -19,11 +21,5 @@
     {
         number++;
         players = await client.GetFromJsonAsync<List<Player>>("/players-module/players");
-    }
-
-    private class Player
-    {
-        public string Email {get; set; }
-        public string Username {get; set; }
     }
 }
